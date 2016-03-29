@@ -12,5 +12,7 @@ public class MainActivity extends AppCompatActivity {
         setContentView(R.layout.activity_main);
         Button b = (Button)findViewById(R.id.button);
         b.setText("Hola desde java 2 ");
+        OrejaEscuchaBoton oreja = new OrejaEscuchaBoton();
+        b.setOnClickListener(oreja);
     }
 }
