@@ -11,6 +11,6 @@ public class MainActivity extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
         Button b = (Button)findViewById(R.id.button);
-        b.setText("Hola desde java");
+        b.setText("Hola desde java 2 ");
     }
 }
