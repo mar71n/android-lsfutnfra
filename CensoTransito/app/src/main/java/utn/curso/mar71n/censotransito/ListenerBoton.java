@@ -10,15 +10,17 @@ import android.widget.TextView;
  */
 public class ListenerBoton implements OnClickListener {
     private TextView tt;
+    private Contador cont;
 
     public ListenerBoton(TextView txttot) {
         this.tt = txttot;
+        cont = new Contador();
     }
 
     @Override
     public void onClick(View v) {
-        Integer actual = Integer.parseInt( tt.getText().toString());
-        actual++;
+        cont.incTot();
+        Integer actual = cont.getTot();
         tt.setText(actual.toString());
     }
 }
