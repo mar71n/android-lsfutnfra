@@ -11,9 +11,15 @@ public class MainCTActivity extends AppCompatActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main_ct);
-        Button bcontar = (Button) findViewById(R.id.button);
+        // totalizador
         TextView txtTotal = (TextView) findViewById(R.id.txtTot);
+        // boton contar
+        Button bcontar = (Button) findViewById(R.id.button);
         ListenerBoton lb1 = new ListenerBoton(txtTotal);
         bcontar.setOnClickListener(lb1);
+        // boton limpiar
+        Button blimpiar = (Button) findViewById(R.id.btnLimpiar);
+        ListenerLimpiar ll1 = new ListenerLimpiar(txtTotal);
+        blimpiar.setOnClickListener(ll1);
     }
 }

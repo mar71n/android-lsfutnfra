@@ -4,22 +4,21 @@ import android.view.View;
 import android.view.View.OnClickListener;
 import android.widget.TextView;
 
-
 /**
  * Created by Usuario on 2/4/2016.
  */
-public class ListenerBoton implements OnClickListener {
+public class ListenerLimpiar implements OnClickListener {
     private TextView tt;
     private Contador cont;
 
-    public ListenerBoton(TextView txttot) {
+    public ListenerLimpiar(TextView txttot){
         this.tt = txttot;
         cont = Contador.getContador();
     }
 
     @Override
     public void onClick(View v) {
-        cont.incTot();
+        cont.delTot();
         Integer actual = cont.getTot();
         tt.setText(actual.toString());
     }
