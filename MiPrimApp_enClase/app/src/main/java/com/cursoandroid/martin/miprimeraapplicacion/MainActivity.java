@@ -16,6 +16,10 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
         b.setText("Hola desde java 3 ");
         // OrejaEscuchaBoton oreja = new OrejaEscuchaBoton(t);
         b.setOnClickListener(this);
+        //ejemplo carga sring
+        Button b3 = (Button)findViewById(R.id.button3);
+        String msg = getString(R.string.mensaje);
+        b3.setText(msg);
     }
     @Override
     public void onClick(View v) {
