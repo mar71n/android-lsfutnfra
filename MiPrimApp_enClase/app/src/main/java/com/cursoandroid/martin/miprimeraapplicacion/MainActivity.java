@@ -4,6 +4,8 @@ import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.view.View;
 import android.widget.Button;
+import android.widget.ImageButton;
+import android.widget.ImageView;
 import android.widget.TextView;
 
 public class MainActivity extends AppCompatActivity implements View.OnClickListener{
@@ -25,5 +27,10 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
     public void onClick(View v) {
         TextView t = (TextView)findViewById(R.id.textView);
         t.setText("ando! tambien");
+
+        //cambio imagen
+        ImageView imgb = (ImageView)findViewById(R.id.imageView);
+        imgb.setImageResource(R.mipmap.ic_launcher);
+
     }
 }
