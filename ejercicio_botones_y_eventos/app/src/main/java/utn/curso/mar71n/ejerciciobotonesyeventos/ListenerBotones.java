@@ -11,14 +11,21 @@ import android.widget.TextView;
 public class ListenerBotones implements View.OnClickListener {
     private TextView textView;
     private EditText editText;
+    private int[] idb;
 
-    public ListenerBotones(TextView tview, EditText eText){
+    public ListenerBotones(TextView tview, EditText eText, int[] idbotones){
         textView = tview;
         editText = eText;
+        idb = idbotones;
     }
 
     @Override
     public void onClick(View v) {
-        textView.setText(editText.getText());
+        if (v.getId() == idb[0]) {
+            textView.setText(editText.getText());
+        }
+        if (v.getId() == idb[1]) {
+            textView.setText("ingrese un texto abajo");
+        }
     }
 }

@@ -15,8 +15,11 @@ public class MainEByEActivity extends AppCompatActivity {
 
         EditText etxt = (EditText) findViewById(R.id.editTextMsg);
         TextView tvmsg = (TextView) findViewById(R.id.tVmensaje);
-        ListenerBotones lBotones = new ListenerBotones(tvmsg,etxt);
         Button btmandar = (Button)findViewById(R.id.bMandar);
+        Button blimpiar = (Button)findViewById(R.id.bLimpiar);
+        int[] idbotones = {R.id.bMandar,R.id.bLimpiar};
+        ListenerBotones lBotones = new ListenerBotones(tvmsg,etxt,idbotones);
         btmandar.setOnClickListener(lBotones);
+        blimpiar.setOnClickListener(lBotones);
     }
 }
