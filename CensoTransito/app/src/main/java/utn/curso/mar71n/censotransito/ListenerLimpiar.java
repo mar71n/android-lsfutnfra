@@ -4,7 +4,6 @@ import android.view.View;
 import android.view.View.OnClickListener;
 import android.widget.TextView;
 
-import java.util.Formatter;
 
 /**
  * Created by Usuario on 2/4/2016.
