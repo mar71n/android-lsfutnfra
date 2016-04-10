@@ -20,6 +20,7 @@ public class MainECActivity extends AppCompatActivity {
         for( int i = 0 ; i <lidBotones.length; i++){
             Button b = (Button)findViewById(lidBotones[i]);
             b.setOnClickListener(listener);
+            b.setMaxWidth(15);
         }
     }
 }
