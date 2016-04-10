@@ -13,7 +13,7 @@ public class MainECActivity extends AppCompatActivity {
         setContentView(R.layout.activity_main_ec);
         int[] lidBotones = new int[]{R.id.bt0, R.id.bt1, R.id.bt2, R.id.bt3, R.id.bt4, R.id.bt5,
                 R.id.bt6, R.id.bt7, R.id.bt8, R.id.bt9, R.id.btad, R.id.btsus,
-                R.id.btmul, R.id.btdiv, R.id.btigual};
+                R.id.btmul, R.id.btdiv, R.id.btigual, R.id.btC};
         TextView display = (TextView)findViewById(R.id.textViewDisplay);
         TextView calculadora = (TextView)findViewById(R.id.textViewCalcu);
         EscucharBotones listener = new EscucharBotones(display, calculadora, lidBotones);

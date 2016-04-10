@@ -1,5 +1,7 @@
 package utn.curso.mar71n.ejcalculadora;
 
+import java.util.Objects;
+
 /**
  * Created by Usuario on 10/4/2016.
  */
@@ -12,6 +14,9 @@ public class Calculadorita {
     public Calculadorita(){
         r = "0";
         espero = "a";
+        a="";
+        b="";
+        o="";
     }
     public Calculadorita ingresar(String algo){
         switch (espero){
@@ -49,7 +54,15 @@ public class Calculadorita {
             case "/" : fr = fa / fb;
                 break;
         }
+        this.a = String.format("%f",fr);
+        this.b = "";
         this.r = String.format("%f",fr);
         return this;
+    }
+
+    @Override
+    public String toString() {
+        String st = this.a + " " + this.o;
+        return st;
     }
 }
