@@ -85,7 +85,7 @@ public class EscucharBotones implements View.OnClickListener {
         if(v.getId() == lidbotones[15]){// C
             calcu.a = "0";
             calcu.b = "0";
-            calcu.r = "0";
+            calcu.r = "000000000000";
             calcu.o = "";
             calcu.espero = "a";
             txtdisplay.setText("0");
