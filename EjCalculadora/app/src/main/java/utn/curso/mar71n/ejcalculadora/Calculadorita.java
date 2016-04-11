@@ -41,9 +41,9 @@ public class Calculadorita {
         return this;
     }
     public Calculadorita calcular(){
-        Float fa = (Float) Float.parseFloat(a);
-        Float fb = (Float) Float.parseFloat(b);
-        Float fr = (Float) Float.parseFloat(r);
+        Float fa = (Float) Float.parseFloat(a.replace(',','.'));
+        Float fb = (Float) Float.parseFloat(b.replace(',','.'));
+        Float fr = (Float) Float.parseFloat(r.replace(',','.'));
         switch (this.o){
             case "+" : fr = fa + fb;
                 break;
