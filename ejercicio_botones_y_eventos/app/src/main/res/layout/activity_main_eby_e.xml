@@ -7,40 +7,41 @@
     android:paddingLeft="@dimen/activity_horizontal_margin"
     android:paddingRight="@dimen/activity_horizontal_margin"
     android:paddingTop="@dimen/activity_vertical_margin"
-    tools:context="utn.curso.mar71n.censotransito.MainCTActivity">
+    tools:context="utn.curso.mar71n.ejerciciobotonesyeventos.MainEByEActivity">
 
     <TextView
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:text="000"
-        android:layout_above="@+id/button"
+        android:text="Ingrese un texto abajo"
+        android:layout_alignParentTop="true"
         android:layout_centerHorizontal="true"
-        android:layout_marginBottom="50dp"
-        android:id="@+id/txtTot" />
+        android:layout_marginTop="72dp"
+        android:id="@+id/tVmensaje" />
+
+    <EditText
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:id="@+id/editTextMsg"
+        android:layout_marginTop="83dp"
+        android:layout_below="@+id/tVmensaje"
+        android:layout_centerHorizontal="true"
+        android:text="un mensaje" />
 
     <Button
-        style="?android:attr/buttonStyleSmall"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:text="Contar"
-        android:id="@+id/button"
-        android:layout_centerVertical="true"
-        android:layout_centerHorizontal="true" />
-
-    <TextView
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:text="TOTAL"
-        android:layout_above="@+id/txtTot"
-        android:layout_centerHorizontal="true" />
+        android:text="Mandar"
+        android:id="@+id/bMandar"
+        android:layout_below="@+id/editTextMsg"
+        android:layout_centerHorizontal="true"
+        android:layout_marginTop="87dp" />
 
     <Button
         style="?android:attr/buttonStyleSmall"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:text="Limpiar"
-        android:id="@+id/btnLimpiar"
-        android:layout_below="@+id/button"
-        android:layout_centerHorizontal="true"
-        android:layout_marginTop="50dp" />
+        android:id="@+id/bLimpiar"
+        android:layout_alignParentTop="true"
+        android:layout_centerHorizontal="true" />
 </RelativeLayout>

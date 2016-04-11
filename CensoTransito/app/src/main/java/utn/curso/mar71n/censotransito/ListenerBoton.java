@@ -21,6 +21,7 @@ public class ListenerBoton implements OnClickListener {
     public void onClick(View v) {
         cont.incTot();
         Integer actual = cont.getTot();
-        tt.setText(actual.toString());
+        String sActual =  String.format("%03d", actual);
+        tt.setText(sActual);
     }
 }

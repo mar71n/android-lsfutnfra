@@ -4,6 +4,7 @@ import android.view.View;
 import android.view.View.OnClickListener;
 import android.widget.TextView;
 
+
 /**
  * Created by Usuario on 2/4/2016.
  */
@@ -20,6 +21,7 @@ public class ListenerLimpiar implements OnClickListener {
     public void onClick(View v) {
         cont.delTot();
         Integer actual = cont.getTot();
-        tt.setText(actual.toString());
+        String sActual =  String.format("%03d", actual);
+        tt.setText(sActual);
     }
 }
