@@ -62,6 +62,8 @@ public class Calculadorita {
 
     @Override
     public String toString() {
+        Float fa = (Float) Float.parseFloat(a.replace(',','.'));
+        this.a = String.format("%012.2f",fa);
         String st = this.a + " " + this.o;
         return st;
     }
