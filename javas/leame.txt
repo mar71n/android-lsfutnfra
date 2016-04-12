@@ -1,0 +1,6 @@
+Compilo con 
+# javac NombreClase.java
+Esto genera un NombreClase.class
+ejecuto
+# java NombreClase
+javac en la pc de san juan: C:\Program Files\Java\jdk1.8.0_73\bin\javac
