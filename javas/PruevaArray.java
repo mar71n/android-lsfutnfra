@@ -22,5 +22,11 @@ class PruebaArray {
                  + arrayDeEnteros[3]);
       System.out.println("arrayDeEnteros[0]: "
                  + arrayDeEnteros[4]);
+
+      int[] otroArrayInt = {11, 22, 33, 44, 55, 66};
+
+      for (int j = 0; j < otroArrayInt.length; j++){
+          System.out.println("otroArray " + otroArrayInt[j]);
+      }
   }
 }
