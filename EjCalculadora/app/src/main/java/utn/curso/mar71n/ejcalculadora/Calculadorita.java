@@ -14,8 +14,8 @@ public class Calculadorita {
     public Calculadorita(){
         r = "0";
         espero = "a";
-        a="";
-        b="";
+        a="000000000000";
+        b="000000000000";
         o="";
     }
     public Calculadorita ingresar(String algo){
@@ -54,14 +54,16 @@ public class Calculadorita {
             case "/" : fr = fa / fb;
                 break;
         }
-        this.a = String.format("%f",fr);
+        this.a = String.format("%012.2f",fr);
         this.b = "";
-        this.r = String.format("%f",fr);
+        this.r = String.format("%012.2f",fr);
         return this;
     }
 
     @Override
     public String toString() {
+        Float fa = (Float) Float.parseFloat(a.replace(',','.'));
+        this.a = String.format("%012.2f",fa);
         String st = this.a + " " + this.o;
         return st;
     }
