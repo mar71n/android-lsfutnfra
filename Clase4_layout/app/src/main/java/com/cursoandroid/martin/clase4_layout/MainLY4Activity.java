@@ -4,6 +4,8 @@ import android.content.pm.LabeledIntent;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.util.Log;
+import android.widget.ArrayAdapter;
+import android.widget.Spinner;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -20,6 +22,8 @@ public class MainLY4Activity extends AppCompatActivity {
         lista.add("opcion 1");
         lista.add("opcion 2");
         lista.add("opcion 3");
+        lista.add("opcion 4");
+        lista.add("opcion 5");
         Log.d("activity", "tamannio:" + lista.size());
         lista.remove(1);
         Log.d("activity", "tamannio:" + lista.size());
@@ -28,5 +32,8 @@ public class MainLY4Activity extends AppCompatActivity {
             Log.d("activity",a);
         }
 
+        Spinner spinner = (Spinner)findViewById(R.id.spinner);
+        ArrayAdapter<String> adapter = new ArrayAdapter<String>(this,android.R.layout.simple_spinner_dropdown_item, lista);
+        spinner.setAdapter(adapter);
     }
 }
