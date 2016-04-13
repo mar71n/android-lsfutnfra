@@ -1,5 +1,11 @@
 # android-utnfra
 
+Curso: http://www.lslutnfra.com/curso-android
+
+Proesor Ernesto Gigliotti ernestogigliotti@gmail.com
+
+Página alumnos: http://www.lslutnfra.com/alumnos
+
 ## Instalar
 
 ### Java JDK
