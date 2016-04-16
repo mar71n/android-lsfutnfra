@@ -36,13 +36,15 @@ public class MainLY4Activity extends AppCompatActivity implements AdapterView.On
 
         Spinner spinner = (Spinner)findViewById(R.id.spinner);
         ArrayAdapter<String> adapter = new ArrayAdapter<String>(this,android.R.layout.simple_spinner_dropdown_item, lista);
+        // lo agrega a lista ya que la pasa por referencia
+        adapter.add("agregado x adapter");
         spinner.setAdapter(adapter);
         spinner.setOnItemSelectedListener(this);
     }
 
     @Override
     public void onItemSelected(AdapterView<?> parent, View view, int position, long id) {
-        Log.d("activiti spiner", String.valueOf(position));
+        Log.d("activity spiner : ", String.valueOf(position));
     }
 
     @Override
