@@ -3,6 +3,7 @@ package utn.curso.mar71n.ejcalculadora;
 import android.app.Application;
 import android.test.ApplicationTestCase;
 import android.test.suitebuilder.annotation.SmallTest;
+import android.util.Log;
 
 /**
  * <a href="http://d.android.com/tools/testing/testing_android.html">Testing Fundamentals</a>
@@ -12,18 +13,19 @@ public class ApplicationTest extends ApplicationTestCase<Application> {
         super(Application.class);
     }
     @SmallTest
-    public void test_calculadorita(){
-        Calculadorita calc = new Calculadorita();
-        calc.ingresar("10");
-        calc.ingresar("+");
-        calc.ingresar("20");
-        assertEquals("30.000000", calc.r);
-        calc.ingresar("-");
-        calc.ingresar("14");
-        assertEquals("16.000000", calc.r);
-        calc.ingresar("*");
-        calc.ingresar("3");
-        assertEquals("48.000000", calc.r);
+    public void test_calculadorita2(){
+        Calculadorita2 calc = new Calculadorita2();
+        calc.ingresar("10", "+");
+        calc.ingresar("10","/");
+        assertEquals("20.00", calc.sR);
+        calc.ingresar("2", "-");
+        assertEquals("10.00", calc.sR);
+        calc.ingresar("3", "*");
+        assertEquals("7.00", calc.sR);
+        calc.ingresar("3", "+");
+        assertEquals("21.00", calc.sR);
+        calc.ingresar("9", "=");
+        assertEquals("30.00", calc.sR);
     }
     @SmallTest
     public void test_formatos(){

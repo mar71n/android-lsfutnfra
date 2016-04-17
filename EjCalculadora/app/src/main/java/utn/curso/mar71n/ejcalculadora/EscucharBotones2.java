@@ -1,23 +1,22 @@
 package utn.curso.mar71n.ejcalculadora;
 
 import android.view.View;
-import android.widget.Button;
 import android.widget.TextView;
 
 /**
- * Created by Usuario on 10/4/2016.
+ * Created by Usuario on 16/4/2016.
  */
-public class EscucharBotones implements View.OnClickListener {
+public class EscucharBotones2 implements View.OnClickListener {
     TextView txtdisplay;
     TextView txtcalculado;
     int[] lidbotones;
-    Calculadorita calcu;
+    Calculadorita2 calcu;
     boolean calculando = true;
-    public EscucharBotones(TextView display, TextView calculadora, int[] lidBotones) {
+    public EscucharBotones2(TextView display, TextView calculadora, int[] lidBotones) {
         txtdisplay  = display;
         txtcalculado = calculadora;
         lidbotones = lidBotones;
-        calcu = new Calculadorita();
+        calcu = new Calculadorita2();
     }
 
     @Override
@@ -53,41 +52,39 @@ public class EscucharBotones implements View.OnClickListener {
             txtdisplay.setText(txtdisplay.getText()+"9");
         }
         if(v.getId() == lidbotones[10] && calculando){// +
-            calcu.ingresar(txtdisplay.getText().toString());
-            calcu.ingresar("+");
+            //calcu.ingresar(txtdisplay.getText().toString());
+            calcu.ingresar(txtdisplay.getText().toString(), "+");
             txtdisplay.setText("0");
             txtcalculado.setText(calcu.toString());
         }
         if(v.getId() == lidbotones[11] && calculando){// -
-            calcu.ingresar(txtdisplay.getText().toString());
-            calcu.ingresar("-");
+            //calcu.ingresar(txtdisplay.getText().toString());
+            calcu.ingresar(txtdisplay.getText().toString(),"-");
             txtdisplay.setText("0");
             txtcalculado.setText(calcu.toString());
         }
         if(v.getId() == lidbotones[12] && calculando){// *
-            calcu.ingresar(txtdisplay.getText().toString());
-            calcu.ingresar("*");
+            //calcu.ingresar(txtdisplay.getText().toString());
+            calcu.ingresar(txtdisplay.getText().toString(),"*");
             txtdisplay.setText("0");
             txtcalculado.setText(calcu.toString());
         }
         if(v.getId() == lidbotones[13] && calculando){// /
-            calcu.ingresar(txtdisplay.getText().toString());
-            calcu.ingresar("/");
+            //calcu.ingresar(txtdisplay.getText().toString());
+            calcu.ingresar(txtdisplay.getText().toString(),"/");
             txtdisplay.setText("0");
             txtcalculado.setText(calcu.toString());
         }
         if(v.getId() == lidbotones[14] && calculando){// =
-            calcu.ingresar(txtdisplay.getText().toString());
+            calcu.ingresar(txtdisplay.getText().toString(),"=");
             calculando = false;
-            txtdisplay.setText(calcu.r);
-            txtcalculado.setText(" ");
+            txtdisplay.setText("0");
+            txtcalculado.setText(calcu.toString());
+            //txtcalculado.setText(" ");
         }
         if(v.getId() == lidbotones[15]){// C
-            calcu.a = "0";
-            calcu.b = "0";
-            calcu.r = "000000000000";
-            calcu.o = "";
-            calcu.espero = "a";
+            calcu.limpiar();
+            //calcu.espero = "a";
             txtdisplay.setText("0");
             calculando = true;
         }

@@ -16,7 +16,7 @@ public class MainECActivity extends AppCompatActivity {
                 R.id.btmul, R.id.btdiv, R.id.btigual, R.id.btC};
         TextView display = (TextView)findViewById(R.id.textViewDisplay);
         TextView calculadora = (TextView)findViewById(R.id.textViewCalcu);
-        EscucharBotones listener = new EscucharBotones(display, calculadora, lidBotones);
+        EscucharBotones2 listener = new EscucharBotones2(display, calculadora, lidBotones);
         for( int i = 0 ; i <lidBotones.length; i++){
             Button b = (Button)findViewById(lidBotones[i]);
             b.setOnClickListener(listener);
