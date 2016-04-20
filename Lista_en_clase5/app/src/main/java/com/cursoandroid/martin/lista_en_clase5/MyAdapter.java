@@ -30,11 +30,9 @@ public class MyAdapter extends RecyclerView.Adapter {
     @Override
     public void onBindViewHolder(RecyclerView.ViewHolder holder, int position) {
         Persona p = lista.get(position);
-        View v = holder.itemView;
-        TextView tNombre = (TextView) v.findViewById(R.id.txtNombre);
-        TextView tApellido = (TextView) v.findViewById(R.id.txtApellido);
-        tNombre.setText(p.getNombre());
-        tApellido.setText(p.getApellido());
+        MyViewHolder mvh = (MyViewHolder) holder;
+        mvh.tNombre.setText(p.getNombre());
+        mvh.tApellido.setText(p.getApellido());
     }
 
     @Override
