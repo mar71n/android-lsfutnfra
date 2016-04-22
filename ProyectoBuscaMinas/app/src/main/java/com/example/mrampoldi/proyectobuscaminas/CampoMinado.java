@@ -16,10 +16,10 @@ public class CampoMinado {
         //SectorMinado sm;
         for (int i=0 ; i<x ; i++){
             for (int j=0; j<y ; j++){
-                SectorMinado sm = new SectorMinado();
+                campo[j][i] = new SectorMinado();
+                SectorMinado sm = campo[j][i];
                 sm.setBb(0);
                 sm.setMostrar("");
-                campo[j][i] = sm;
             }
         }
     }
