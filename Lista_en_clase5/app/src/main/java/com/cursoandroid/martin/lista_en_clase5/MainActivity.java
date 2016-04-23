@@ -10,7 +10,7 @@ import android.widget.Toast;
 import java.util.ArrayList;
 import java.util.List;
 
-public class MainActivity extends AppCompatActivity {
+public class MainActivity extends AppCompatActivity implements MyOnItemClick {
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -52,7 +52,7 @@ public class MainActivity extends AppCompatActivity {
 
         RecyclerView rv = (RecyclerView) findViewById(R.id.list);
 
-        MyAdapter adapter = new MyAdapter(lista,this);
+        MyAdapter adapter = new MyAdapter(lista, this, this);
 
         rv.setAdapter(adapter);
 
@@ -72,5 +72,11 @@ public class MainActivity extends AppCompatActivity {
         // paginando
         // aca habria que pedir el siguiente bloque de datos a algun servicio
         Toast.makeText(this,"ultimo dato, aguarde...",Toast.LENGTH_LONG).show();
+    }
+
+    @Override
+    public void onItemClick(int position) {
+        String t = "click en " + position;
+        Toast.makeText(this,(CharSequence) t,Toast.LENGTH_SHORT).show();
     }
 }

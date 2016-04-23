@@ -14,13 +14,15 @@ import java.util.List;
 public class MyAdapter extends RecyclerView.Adapter {
     List<Persona> lista;
     private MainActivity a;
+    private MyOnItemClick listener;
     static Integer pasoXonCreateViewHolder = 0;
     static Integer pasoXonBindViewHolder = 0;
     static Integer pasoXgetItemCount = 0;
 
-    public MyAdapter(List<Persona> lista, MainActivity a){
+    public MyAdapter(List<Persona> lista, MainActivity a, MyOnItemClick listener){
         this.lista = lista;
         this.a = a;
+        this.listener = listener;
     }
 
     @Override
@@ -28,7 +30,7 @@ public class MyAdapter extends RecyclerView.Adapter {
         View v = LayoutInflater
                 .from(parent.getContext())
                 .inflate(R.layout.item_layout, parent, false);
-        RecyclerView.ViewHolder vh = new MyViewHolder(v);
+        RecyclerView.ViewHolder vh = new MyViewHolder(v, listener);
         pasoXonCreateViewHolder++;
         return vh;
     }
@@ -39,6 +41,7 @@ public class MyAdapter extends RecyclerView.Adapter {
         MyViewHolder mvh = (MyViewHolder) holder;
         mvh.tNombre.setText(p.getNombre());
         mvh.tApellido.setText(p.getApellido());
+        mvh.setPosition(position);
         if((position+1) == getItemCount()){
             // si no hay mas datos le aviso al activity
             a.seMostroFinLista();
