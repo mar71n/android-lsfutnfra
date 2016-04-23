@@ -13,6 +13,9 @@ import java.util.List;
  */
 public class MyAdapter extends RecyclerView.Adapter {
     List<Persona> lista;
+    static Integer pasoXonCreateViewHolder = 0;
+    static Integer pasoXonBindViewHolder = 0;
+    static Integer pasoXgetItemCount = 0;
 
     public MyAdapter(List<Persona> lista){
         this.lista = lista;
@@ -24,6 +27,7 @@ public class MyAdapter extends RecyclerView.Adapter {
                 .from(parent.getContext())
                 .inflate(R.layout.item_layout, parent, false);
         RecyclerView.ViewHolder vh = new MyViewHolder(v);
+        pasoXonCreateViewHolder++;
         return vh;
     }
 
@@ -33,10 +37,12 @@ public class MyAdapter extends RecyclerView.Adapter {
         MyViewHolder mvh = (MyViewHolder) holder;
         mvh.tNombre.setText(p.getNombre());
         mvh.tApellido.setText(p.getApellido());
+        pasoXonBindViewHolder++;
     }
 
     @Override
     public int getItemCount() {
+        pasoXgetItemCount++;
         return lista.size();
     }
 }
