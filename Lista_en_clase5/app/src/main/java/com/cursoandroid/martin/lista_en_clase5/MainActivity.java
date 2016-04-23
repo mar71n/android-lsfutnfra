@@ -5,6 +5,7 @@ import android.os.Bundle;
 import android.support.v7.widget.LinearLayoutManager;
 import android.support.v7.widget.RecyclerView;
 import android.util.Log;
+import android.widget.Toast;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -51,7 +52,7 @@ public class MainActivity extends AppCompatActivity {
 
         RecyclerView rv = (RecyclerView) findViewById(R.id.list);
 
-        MyAdapter adapter = new MyAdapter(lista);
+        MyAdapter adapter = new MyAdapter(lista,this);
 
         rv.setAdapter(adapter);
 
@@ -65,5 +66,11 @@ public class MainActivity extends AppCompatActivity {
         Log.d("paso x onBindViewHolder", MyAdapter.pasoXonBindViewHolder.toString());
         Log.d("paso x getItemCount", MyAdapter.pasoXgetItemCount.toString());
         super.onStop();
+    }
+
+    public void seMostroFinLista(){
+        // paginando
+        // aca habria que pedir el siguiente bloque de datos a algun servicio
+        Toast.makeText(this,"ultimo dato, aguarde...",Toast.LENGTH_LONG).show();
     }
 }
