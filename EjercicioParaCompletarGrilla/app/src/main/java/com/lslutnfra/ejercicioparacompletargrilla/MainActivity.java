@@ -23,7 +23,7 @@ public class MainActivity extends AppCompatActivity implements OnFichaClick {
 
         flagNuevaPagina=false;
         fichas = new ArrayList<Ficha>();
-        fichas.add(new Ficha(Ficha.TAPADA,R.drawable.img_1));
+        fichas.add(new Ficha(Ficha.DESTAPADA,R.drawable.img_1));
         fichas.add(new Ficha(Ficha.TAPADA,R.drawable.img_1));
         fichas.add(new Ficha(Ficha.TAPADA,R.drawable.img_2));
         fichas.add(new Ficha(Ficha.TAPADA,R.drawable.img_2));
@@ -34,7 +34,7 @@ public class MainActivity extends AppCompatActivity implements OnFichaClick {
         fichas.add(new Ficha(Ficha.TAPADA,R.drawable.img_5));
         fichas.add(new Ficha(Ficha.TAPADA,R.drawable.img_5));
         fichas.add(new Ficha(Ficha.TAPADA,R.drawable.img_6));
-        fichas.add(new Ficha(Ficha.TAPADA,R.drawable.img_6));
+        fichas.add(new Ficha(Ficha.DESTAPADA,R.drawable.img_6));
         Collections.shuffle(fichas);
 
         RecyclerView list = (RecyclerView)findViewById(R.id.list);
@@ -53,6 +53,7 @@ public class MainActivity extends AppCompatActivity implements OnFichaClick {
         String t = "click en " + position + " stado : " + f.getEstado();
         Toast.makeText(this, (CharSequence) t, Toast.LENGTH_SHORT).show();
         f.setEstado(!f.getEstado());
+
         // cambiar el estado de la ficha y refrescar la pantalla
     }
 }

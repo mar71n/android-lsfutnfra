@@ -1,6 +1,8 @@
 package com.lslutnfra.ejercicioparacompletargrilla;
 
+import android.media.Image;
 import android.support.v7.widget.RecyclerView.Adapter;
+import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -33,12 +35,12 @@ public class MyAdapter extends Adapter<MyViewHolder> {
         // si esta tapada, cargo el imageview con la imagen del signo de pregunta
         Ficha f = lista.get(position);
         MyViewHolder v = holder;
-        v.setPosition(position);
         if(f.getEstado()){
-            f.setImagen(R.drawable.question_icon);
+            v.img.setImageResource(R.drawable.question_icon);
         }else{
-            f.setImagen(R.drawable.img_2);
+            v.img.setImageResource(R.drawable.img_1);
         }
+        v.setPosition(position);
     }
 
     @Override
