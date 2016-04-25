@@ -8,10 +8,12 @@ public class MyViewHolder extends RecyclerView.ViewHolder implements View.OnClic
 
     ImageView img;
     int position;
+    private OnFichaClick listener;
 
 
-    public MyViewHolder(View itemView) {  // recibir listener
+    public MyViewHolder(View itemView, OnFichaClick listener) {  // recibir listener
         super(itemView);
+        this.listener = listener;
         img = (ImageView) itemView.findViewById(R.id.icon);
 
         itemView.setOnClickListener(this);
@@ -20,5 +22,11 @@ public class MyViewHolder extends RecyclerView.ViewHolder implements View.OnClic
     @Override
     public void onClick(View v) {
         // llamar a metodo de listener, pasando la posicion
+
+        listener.clickEnFicha(position);
+    }
+
+    public void setPosition(int position){
+        this.position = position;
     }
 }

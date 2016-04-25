@@ -4,6 +4,7 @@ import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.support.v7.widget.GridLayoutManager;
 import android.support.v7.widget.RecyclerView;
+import android.widget.Toast;
 
 import java.util.ArrayList;
 import java.util.Collections;
@@ -49,6 +50,9 @@ public class MainActivity extends AppCompatActivity implements OnFichaClick {
     @Override
     public void clickEnFicha(int position) {
         Ficha f = fichas.get(position);
+        String t = "click en " + position + " stado : " + f.getEstado();
+        Toast.makeText(this, (CharSequence) t, Toast.LENGTH_SHORT).show();
+        f.setEstado(!f.getEstado());
         // cambiar el estado de la ficha y refrescar la pantalla
     }
 }
