@@ -38,7 +38,21 @@ public class MyAdapter extends Adapter<MyViewHolder> {
         if(f.getEstado()){
             v.img.setImageResource(R.drawable.question_icon);
         }else{
-            v.img.setImageResource(R.drawable.img_1);
+            int img = f.getImagen();
+            switch (img){
+                case 1 : v.img.setImageResource(R.drawable.img_1);
+                    break;
+                case 2 : v.img.setImageResource(R.drawable.img_2);
+                    break;
+                case 3 : v.img.setImageResource(R.drawable.img_3);
+                    break;
+                case 4 : v.img.setImageResource(R.drawable.img_4);
+                    break;
+                case 5 : v.img.setImageResource(R.drawable.img_5);
+                    break;
+                case 6 : v.img.setImageResource(R.drawable.img_6);
+                    break;
+            }
         }
         v.setPosition(position);
     }
