@@ -12,13 +12,14 @@ import java.util.ArrayList;
 import java.util.List;
 
 public class MainActivity extends AppCompatActivity implements MyOnItemClick {
+    public static List<Persona> lista;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
 
-        List<Persona> lista = new ArrayList<Persona>();
+        lista = new ArrayList<Persona>();
         Persona p1 = new Persona("Juan", "Perez");
         Persona p2 = new Persona("Luis", "Gomez");
         Persona p3 = new Persona("Luis", "Gomez");
@@ -81,6 +82,7 @@ public class MainActivity extends AppCompatActivity implements MyOnItemClick {
         Toast.makeText(this,(CharSequence) t,Toast.LENGTH_SHORT).show();
         // lanzo la otra activity
         Intent i = new Intent(this, Pantalla2Activity.class);
+        i.putExtra("p",position);
         startActivity(i);
     }
 }
