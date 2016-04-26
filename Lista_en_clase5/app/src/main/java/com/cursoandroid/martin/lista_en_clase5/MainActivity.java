@@ -1,5 +1,6 @@
 package com.cursoandroid.martin.lista_en_clase5;
 
+import android.content.Intent;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.support.v7.widget.LinearLayoutManager;
@@ -78,5 +79,8 @@ public class MainActivity extends AppCompatActivity implements MyOnItemClick {
     public void onItemClick(int position) {
         String t = "click en " + position;
         Toast.makeText(this,(CharSequence) t,Toast.LENGTH_SHORT).show();
+        // lanzo la otra activity
+        Intent i = new Intent(this, Pantalla2Activity.class);
+        startActivity(i);
     }
 }
