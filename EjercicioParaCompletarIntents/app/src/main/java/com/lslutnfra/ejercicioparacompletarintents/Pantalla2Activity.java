@@ -18,7 +18,6 @@ public class Pantalla2Activity extends AppCompatActivity implements View.OnClick
         super.onCreate(savedInstanceState);
         setContentView(R.layout.pantalla2_layout);
 
-
     }
 
     @Override
