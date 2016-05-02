@@ -18,6 +18,8 @@ public class Pantalla2Activity extends AppCompatActivity implements View.OnClick
         super.onCreate(savedInstanceState);
         setContentView(R.layout.pantalla2_layout);
 
+        Button btnAceptar = (Button) findViewById(R.id.btnAceptar);
+        btnAceptar.setOnClickListener(this);
     }
 
     @Override

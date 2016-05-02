@@ -24,8 +24,10 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
 
     @Override
     protected void onActivityResult(int requestCode, int resultCode, Intent data) {
-
-
+        if(resultCode == RESULT_OK){
+            TextView tvUrl = (TextView) findViewById(R.id.txtUrl);
+            tvUrl.setText(data.getExtras().getString("texto"));
+        }
 
 
     }
@@ -34,7 +36,7 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
     public void onClick(View v) {
         if(v.getId() == R.id.btnIngresarUrl){
             Intent i = new Intent(this,Pantalla2Activity.class);
-            startActivity(i);
+            startActivityForResult(i,0);
         }
     }
 }
