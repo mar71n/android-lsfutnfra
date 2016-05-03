@@ -38,5 +38,12 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
             Intent i = new Intent(this,Pantalla2Activity.class);
             startActivityForResult(i,0);
         }
+        if(v.getId() == R.id.btnVerPagina){
+            Intent i = new Intent(Intent.ACTION_VIEW);
+            TextView tvUrl = (TextView) findViewById(R.id.txtUrl);
+            String txtUri = (String) tvUrl.getText();
+            i.setData(Uri.parse(txtUri));
+            startActivity( Intent.createChooser(i,"Elija navegador"));
+        }
     }
 }
