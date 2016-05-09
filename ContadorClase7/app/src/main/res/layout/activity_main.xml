@@ -14,4 +14,15 @@
         android:layout_height="wrap_content"
         android:text="Hello World!"
         android:id="@+id/txtView" />
+
+    <Button
+        style="?android:attr/buttonStyleSmall"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="Parar"
+        android:id="@+id/botonPulsador"
+        android:layout_below="@+id/txtView"
+        android:layout_alignParentLeft="true"
+        android:layout_alignParentStart="true"
+        android:layout_marginTop="59dp" />
 </RelativeLayout>
