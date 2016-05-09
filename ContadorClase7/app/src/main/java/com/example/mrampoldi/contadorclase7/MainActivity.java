@@ -4,12 +4,10 @@ package com.example.mrampoldi.contadorclase7;
         import android.os.Message;
         import android.support.v7.app.AppCompatActivity;
         import android.os.Bundle;
-        import android.view.KeyEvent;
         import android.widget.TextView;
 
 public class MainActivity extends AppCompatActivity implements Handler.Callback {
-    static TextView txt2;
-    static int cont = 0;
+    private TextView txt2;
     private Hilo h;
 
     @Override
@@ -22,11 +20,8 @@ public class MainActivity extends AppCompatActivity implements Handler.Callback 
 
         Handler hh = new Handler(this);
 
-        //Hilo h = new Hilo(txt);
         h = new Hilo(hh);
         h.start();
-
-        txt.setText("seg " + cont);
     }
 
     @Override
