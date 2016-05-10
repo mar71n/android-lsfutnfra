@@ -6,6 +6,7 @@ import android.util.Log;
 
 public class Hilo extends Thread {
     private Handler hh;
+    private boolean flagPausa = false;
     public Hilo(Handler hh){
         this.hh = hh;
     }
@@ -20,11 +21,32 @@ public class Hilo extends Thread {
                 Log.d("thread", "salgo del thread");
                 return;
             }
+            if (flagPausa){
+                flagPausa = false;
+                try {
+                    synchronized (this){
+                        Log.d("1","Entro en PAUSA");
+                        wait();
+                    }
+                } catch (InterruptedException e) {
+                    e.printStackTrace();
+                    return;
+                }
+            }
             Log.d("thread", "contador : " + i);
             Message msg = new Message();
             msg.arg1 = i;
             msg.obj = "contador = " + i;
             hh.sendMessage(msg);
         }
+    }
+    public void pausar(){
+        flagPausa = true;
+    }
+    public boolean getFlagPausa(){
+        return flagPausa;
+    }
+    public void setFlagPausa(boolean sino){
+        this.flagPausa = sino;
     }
 }

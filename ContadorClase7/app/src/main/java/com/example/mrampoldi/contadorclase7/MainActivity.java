@@ -11,13 +11,15 @@ package com.example.mrampoldi.contadorclase7;
 public class MainActivity extends AppCompatActivity implements Handler.Callback, View.OnClickListener {
     private TextView txt2;
     private Hilo h;
+    private boolean parado = false;
+    private Button pulsador;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
 
-        Button pulsador = (Button) findViewById(R.id.botonPulsador);
+        pulsador = (Button) findViewById(R.id.botonPulsador);
 
         TextView txt = (TextView) findViewById(R.id.txtView);
         txt2 =  (TextView) findViewById(R.id.txtView);
@@ -45,6 +47,19 @@ public class MainActivity extends AppCompatActivity implements Handler.Callback,
 
     @Override
     public void onClick(View v) {
-        h.interrupt();
+        if(parado){
+            parado = false;
+            pulsador.setText("PARAR");
+            synchronized (h){
+                h.setFlagPausa(false);
+                h.notify();
+            }
+        }else{
+            parado = true;
+            pulsador.setText("ARRANCAR");
+            synchronized (h){
+                h.pausar();
+            }
+        }
     }
 }
