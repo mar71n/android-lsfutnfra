@@ -1,6 +1,7 @@
 package com.cursoandroid.martin.lista_en_clase5;
 
 import android.content.Intent;
+import android.os.Handler;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.support.v7.widget.LinearLayoutManager;
@@ -13,6 +14,7 @@ import java.util.List;
 
 public class MainActivity extends AppCompatActivity implements MyOnItemClick {
     public static List<Persona> lista;
+    MyAdapter adapter;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -54,7 +56,7 @@ public class MainActivity extends AppCompatActivity implements MyOnItemClick {
 
         RecyclerView rv = (RecyclerView) findViewById(R.id.list);
 
-        MyAdapter adapter = new MyAdapter(lista, this, this);
+        adapter = new MyAdapter(lista, this, this);
 
         rv.setAdapter(adapter);
 
@@ -73,6 +75,20 @@ public class MainActivity extends AppCompatActivity implements MyOnItemClick {
     public void seMostroFinLista(){
         // paginando
         // aca habria que pedir el siguiente bloque de datos a algun servicio
+        Persona pp = new Persona("Luis pepe", "Gomez");
+
+        lista.add(pp);
+        lista.add(pp);
+        lista.add(pp);
+
+        Handler h = new Handler();
+        h.post(new Runnable() {
+            @Override
+            public void run() {
+                adapter.notifyDataSetChanged();
+            }
+        });
+
         Toast.makeText(this,"ultimo dato, aguarde...",Toast.LENGTH_LONG).show();
     }
 
