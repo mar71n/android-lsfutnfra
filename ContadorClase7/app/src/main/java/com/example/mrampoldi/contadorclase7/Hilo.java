@@ -29,7 +29,7 @@ public class Hilo extends Thread {
                         wait();
                     }
                 } catch (InterruptedException e) {
-                    e.printStackTrace();
+                    Log.d("thread", "salgo del thread");
                     return;
                 }
             }
