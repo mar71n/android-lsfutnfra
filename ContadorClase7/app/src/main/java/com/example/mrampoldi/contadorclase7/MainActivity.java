@@ -21,7 +21,6 @@ public class MainActivity extends AppCompatActivity implements Handler.Callback,
 
         pulsador = (Button) findViewById(R.id.botonPulsador);
 
-        TextView txt = (TextView) findViewById(R.id.txtView);
         txt2 =  (TextView) findViewById(R.id.txtView);
 
         Handler hh = new Handler(this);
