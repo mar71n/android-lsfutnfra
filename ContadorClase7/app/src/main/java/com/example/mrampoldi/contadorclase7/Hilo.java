@@ -43,10 +43,4 @@ public class Hilo extends Thread {
     public void pausar(){
         flagPausa = true;
     }
-    public boolean getFlagPausa(){
-        return flagPausa;
-    }
-    public void setFlagPausa(boolean sino){
-        this.flagPausa = sino;
-    }
 }

@@ -51,7 +51,6 @@ public class MainActivity extends AppCompatActivity implements Handler.Callback,
             parado = false;
             pulsador.setText("PARAR");
             synchronized (h){
-                h.setFlagPausa(false);
                 h.notify();
             }
         }else{
