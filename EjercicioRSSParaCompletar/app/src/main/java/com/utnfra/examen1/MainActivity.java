@@ -23,6 +23,7 @@ public class MainActivity extends ActionBarActivity implements  Handler.Callback
     private ScreenManager sm;
 
     private Handler h;
+    private ThreadPoolExecutor executor;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -35,7 +36,7 @@ public class MainActivity extends ActionBarActivity implements  Handler.Callback
         Thread t = new Thread(tc);
         t.start();
 
-
+        executor = (ThreadPoolExecutor) Executors.newFixedThreadPool(3);
 
         sm = new ScreenManager(this);
     }
@@ -76,8 +77,9 @@ public class MainActivity extends ActionBarActivity implements  Handler.Callback
                     ThreadConexion t = new ThreadConexion(h, n.getImageUrl(), true);
                     t.setExtraData(i);
                     i++;
-                    Thread th = new Thread();
-                    th.start();
+                    //Thread th = new Thread();
+                    //th.start();
+                    executor.execute(t);
                 }
 
                 break;
