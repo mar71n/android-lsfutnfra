@@ -52,6 +52,14 @@ public class MainActivity extends ActionBarActivity implements  Handler.Callback
             }
             case 1: // llego una imagen
             {
+                int pos = msg.arg2;
+                byte[] data = (byte[]) msg.obj;
+                Bitmap b = BitmapFactory.decodeByteArray(data, 0, data.length);
+
+                Noticia n = listaNoticias.get(pos);
+                n.setBitmap(b);
+
+                sm.refresco();
 
                 break;
             }
@@ -63,6 +71,14 @@ public class MainActivity extends ActionBarActivity implements  Handler.Callback
                 listaNoticias = pn.parseListaNoticias();
                 sm.mostrarLista(listaNoticias);
 
+                int i = 0;
+                for (Noticia n: listaNoticias){
+                    ThreadConexion t = new ThreadConexion(h, n.getImageUrl(), true);
+                    t.setExtraData(i);
+                    i++;
+                    Thread th = new Thread();
+                    th.start();
+                }
 
                 break;
             }

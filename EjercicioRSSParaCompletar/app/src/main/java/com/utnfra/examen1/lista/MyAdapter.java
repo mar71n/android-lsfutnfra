@@ -40,7 +40,11 @@ public class MyAdapter extends Adapter<MyViewHolder> {
         holder.txtDescripcion.setText(n.getDescription());
         //_____________________________________________________
 
-
+        if(n.getBitmap()==null){
+            holder.imgNoticia.setImageResource(R.drawable.avatar);
+        }else{
+            holder.imgNoticia.setImageBitmap(n.getBitmap());
+        }
 
 
     }
