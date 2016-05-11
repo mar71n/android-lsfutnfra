@@ -9,14 +9,16 @@ public class ThreadConexion implements Runnable{
 
     private String url;
     private boolean flagBytesString;
+    private Handler h;
 
     /*	Recibimos un Handler, la URL y un flag que indica si leemos bytes o String
      *
      */
-    public ThreadConexion(String url,boolean flagBytesString)
+    public ThreadConexion(Handler h, String url,boolean flagBytesString)
     {
         this.url = url;
         this.flagBytesString=flagBytesString;
+        this.h = h;
     }
 
     /*
@@ -35,12 +37,16 @@ public class ThreadConexion implements Runnable{
                 byte[] bytesRespuesta;
                 bytesRespuesta = httpManager.getBytesDataByGET();
                 // cargar respuesta en mensaje
+                msg.obj = bytesRespuesta;
+                msg.arg1 = 1;
             }
             else
             {
                 String strRespuesta;
                 strRespuesta = httpManager.getStrDataByGET();
                 // cargar respuesta en mensaje
+                msg.obj = strRespuesta;
+                msg.arg1 = 2;
             }
 
         }catch(Exception e)
@@ -50,6 +56,7 @@ public class ThreadConexion implements Runnable{
         }
 
         // Enviar mensaje
+        h.sendMessage(msg);
     }
 
 

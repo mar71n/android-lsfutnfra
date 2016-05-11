@@ -45,7 +45,7 @@ public class MainActivity extends ActionBarActivity implements Handler.Callback 
                 break;
             }
             case 2:{
-                Log.d("activity","Recibiendo string (json)");
+                Log.d("activity","Recibiendo string (json o XML)");
                 // cargar texto en textView
                 break;
             }
