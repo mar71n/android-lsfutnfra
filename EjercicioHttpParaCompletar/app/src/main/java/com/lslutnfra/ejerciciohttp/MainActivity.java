@@ -1,5 +1,7 @@
 package com.lslutnfra.ejerciciohttp;
 
+import android.graphics.Bitmap;
+import android.graphics.BitmapFactory;
 import android.os.Handler;
 import android.os.Message;
 import android.support.v7.app.ActionBarActivity;
@@ -7,6 +9,8 @@ import android.os.Bundle;
 import android.util.Log;
 import android.view.Menu;
 import android.view.MenuItem;
+import android.widget.ImageView;
+import android.widget.TextView;
 
 
 public class MainActivity extends ActionBarActivity implements Handler.Callback {
@@ -16,14 +20,16 @@ public class MainActivity extends ActionBarActivity implements Handler.Callback 
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
 
+        Handler h = new Handler(this);
+
         // flag en true para recibir bytes
-        ThreadConexion tc = new ThreadConexion("http://www.lslutnfra.com/alumnos/practicas/ubuntu-logo.png",true);
+        ThreadConexion tc = new ThreadConexion(h,"http://www.lslutnfra.com/alumnos/practicas/ubuntu-logo.png",true);
         Thread t = new Thread(tc);
         t.start();
         //________________________________
 
         // flag en false para recibir un string
-        ThreadConexion tc2 = new ThreadConexion("http://www.lslutnfra.com/alumnos/practicas/listaPersonas.xml",false);
+        ThreadConexion tc2 = new ThreadConexion(h,"http://www.lslutnfra.com/alumnos/practicas/listaPersonas.xml",false);
         Thread t2 = new Thread(tc2);
         t2.start();
         //_____________________________________
@@ -42,11 +48,18 @@ public class MainActivity extends ActionBarActivity implements Handler.Callback 
             case 1:{
                 Log.d("activity","Recibiendo bytes (imagen)");
                 // Cargar imagen en imageview
+                ImageView i = (ImageView) findViewById(R.id.imageView);
+                byte[] data = (byte[]) msg.obj;
+                Bitmap b = BitmapFactory.decodeByteArray(data, 0, data.length);
+                i.setImageBitmap(b);
                 break;
             }
             case 2:{
                 Log.d("activity","Recibiendo string (json o XML)");
                 // cargar texto en textView
+                TextView t = (TextView) findViewById(R.id.textView);
+                String s = (String) msg.obj;
+                t.setText(s);
                 break;
             }
         }
