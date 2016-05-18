@@ -1,5 +1,7 @@
 package com.example.android.menunlase9;
 
+import android.app.AlertDialog;
+import android.content.DialogInterface;
 import android.os.Bundle;
 import android.support.design.widget.FloatingActionButton;
 import android.support.design.widget.Snackbar;
@@ -10,7 +12,7 @@ import android.view.View;
 import android.view.Menu;
 import android.view.MenuItem;
 
-public class MainActivity extends AppCompatActivity {
+public class MainActivity extends AppCompatActivity implements DialogInterface.OnClickListener {
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -64,10 +66,27 @@ public class MainActivity extends AppCompatActivity {
             case R.id.opcion3:
             {
                 Log.d("activity", "opcion 3");
+                MiDialogo md = new MiDialogo();
+                md.show(getSupportFragmentManager(),"dialogo");
                 return true;
             }
         }
 
         return super.onOptionsItemSelected(item);
+    }
+
+    @Override
+    public void onClick(DialogInterface dialog, int which) {
+        Log.d("dialogo:","boton : " + which);
+        switch (which){
+            case AlertDialog.BUTTON_NEGATIVE:
+            {
+                break;
+            }
+            case AlertDialog.BUTTON_POSITIVE:
+            {
+                break;
+            }
+        }
     }
 }
