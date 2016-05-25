@@ -3,6 +3,8 @@ package com.example.android.navdrawclase10;
 import android.os.Bundle;
 import android.support.design.widget.FloatingActionButton;
 import android.support.design.widget.Snackbar;
+import android.support.v4.app.Fragment;
+import android.support.v4.app.FragmentManager;
 import android.view.View;
 import android.support.design.widget.NavigationView;
 import android.support.v4.view.GravityCompat;
@@ -79,6 +81,20 @@ public class MainActivity extends AppCompatActivity
     public boolean onNavigationItemSelected(MenuItem item) {
         // Handle navigation view item clicks here.
         int id = item.getItemId();
+
+        switch (id)
+        {
+            case R.id.drawer_item_mercurio:
+                setContenido(0);break;
+            case R.id.drawer_item_venus:
+                setContenido(1);break;
+            case R.id.drawer_item_tierra:
+                setContenido(2);break;
+            case R.id.drawer_item_marte:
+                setContenido(3);break;
+            case R.id.drawer_item_jupiter:
+                setContenido(4);break;
+        }
         /*
         if (id == R.id.nav_camera) {
             // Handle the camera action
@@ -98,4 +114,26 @@ public class MainActivity extends AppCompatActivity
         drawer.closeDrawer(GravityCompat.START);
         return true;
     }
+    // metodo que carga el fragment en el conten
+    private void setContenido(int numeroContenido)
+    {
+        Fragment fragment;
+
+        Bundle bundle = new Bundle();
+        bundle.putInt("idPlaneta",numeroContenido);
+
+        if(numeroContenido%2==0)
+            fragment = new Contenido1();
+        else
+            fragment = new Contenido2();
+
+        fragment.setArguments(bundle);
+
+        FragmentManager fragmentManager = getSupportFragmentManager();
+        fragmentManager.beginTransaction()
+                .replace(R.id.contenedor, fragment)
+                .commit();
+
+    }
+
 }
