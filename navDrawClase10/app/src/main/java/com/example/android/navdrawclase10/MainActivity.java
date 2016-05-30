@@ -3,7 +3,6 @@ package com.example.android.navdrawclase10;
 import android.os.Bundle;
 import android.support.design.widget.FloatingActionButton;
 import android.support.design.widget.Snackbar;
-import android.support.v4.app.Fragment;
 import android.support.v4.app.FragmentManager;
 import android.view.View;
 import android.support.design.widget.NavigationView;
@@ -117,15 +116,19 @@ public class MainActivity extends AppCompatActivity
     // metodo que carga el fragment en el conten
     private void setContenido(int numeroContenido)
     {
-        Fragment fragment;
+        Contenido1 fragment;
 
         Bundle bundle = new Bundle();
         bundle.putInt("idPlaneta",numeroContenido);
 
-        if(numeroContenido%2==0)
+        if(numeroContenido%2==0) {
+            fragment =  new Contenido1();
+            fragment.setIdL(R.layout.layout_contenido1);
+        }
+        else {
             fragment = new Contenido1();
-        else
-            fragment = new Contenido2();
+            fragment.setIdL(R.layout.layout_contenido2);
+        }
 
         fragment.setArguments(bundle);
 
