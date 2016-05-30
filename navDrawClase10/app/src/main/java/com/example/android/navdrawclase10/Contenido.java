@@ -11,7 +11,7 @@ import android.widget.TextView;
 /**
  * Created by android on 24/05/16.
  */
-public class Contenido1 extends Fragment {
+public class Contenido extends Fragment {
 
     private int idL = R.layout.layout_contenido1;
 

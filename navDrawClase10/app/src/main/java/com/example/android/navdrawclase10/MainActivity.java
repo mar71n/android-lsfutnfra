@@ -116,17 +116,17 @@ public class MainActivity extends AppCompatActivity
     // metodo que carga el fragment en el conten
     private void setContenido(int numeroContenido)
     {
-        Contenido1 fragment;
+        Contenido fragment;
 
         Bundle bundle = new Bundle();
         bundle.putInt("idPlaneta",numeroContenido);
 
         if(numeroContenido%2==0) {
-            fragment =  new Contenido1();
+            fragment =  new Contenido();
             fragment.setIdL(R.layout.layout_contenido1);
         }
         else {
-            fragment = new Contenido1();
+            fragment = new Contenido();
             fragment.setIdL(R.layout.layout_contenido2);
         }
 
