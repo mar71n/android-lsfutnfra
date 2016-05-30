@@ -32,7 +32,12 @@ public class MainActivity extends AppCompatActivity implements DialogInterface.O
             @Override
             public void onClick(View view) {
                 Snackbar.make(view, "Replace with your own action", Snackbar.LENGTH_LONG)
-                        .setAction("Action", null).show();
+                        .setAction("Action", new View.OnClickListener(){
+                            @Override
+                            public void onClick(View v) {
+                                Log.d(getLocalClassName(),"La accion de la Snackbar");
+                            }
+                        }).show();
             }
         });
     }
