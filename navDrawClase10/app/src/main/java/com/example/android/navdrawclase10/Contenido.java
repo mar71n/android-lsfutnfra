@@ -13,23 +13,18 @@ import android.widget.TextView;
  */
 public class Contenido extends Fragment {
 
-    private int idL = R.layout.layout_contenido1;
-
-    public void setIdL(int idL) {
-        this.idL = idL;
-    }
-
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
                              Bundle savedInstanceState) {
 
+        Bundle args = getArguments();
+        int idL = args.getInt("idLayout");
         View v = inflater.inflate(idL, container,false);
 
         ImageView img = (ImageView)v.findViewById(R.id.imgPlaneta);
         TextView txtTitulo = (TextView)v.findViewById(R.id.txtTitulo);
         TextView txtInfo = (TextView)v.findViewById(R.id.txtInfo);
 
-        Bundle args = getArguments();
         int idPlaneta = args.getInt("idPlaneta");
         switch(idPlaneta)
         {

@@ -94,20 +94,6 @@ public class MainActivity extends AppCompatActivity
             case R.id.drawer_item_jupiter:
                 setContenido(4);break;
         }
-        /*
-        if (id == R.id.nav_camera) {
-            // Handle the camera action
-        } else if (id == R.id.nav_gallery) {
-
-        } else if (id == R.id.nav_slideshow) {
-
-        } else if (id == R.id.nav_manage) {
-
-        } else if (id == R.id.nav_share) {
-
-        } else if (id == R.id.nav_send) {
-
-        }*/
 
         DrawerLayout drawer = (DrawerLayout) findViewById(R.id.drawer_layout);
         drawer.closeDrawer(GravityCompat.START);
@@ -123,11 +109,11 @@ public class MainActivity extends AppCompatActivity
 
         if(numeroContenido%2==0) {
             fragment =  new Contenido();
-            fragment.setIdL(R.layout.layout_contenido1);
+            bundle.putInt("idLayout",R.layout.layout_contenido1);
         }
         else {
             fragment = new Contenido();
-            fragment.setIdL(R.layout.layout_contenido2);
+            bundle.putInt("idLayout",R.layout.layout_contenido2);
         }
 
         fragment.setArguments(bundle);
