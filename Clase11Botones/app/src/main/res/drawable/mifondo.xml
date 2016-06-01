@@ -16,6 +16,6 @@ http://www.mindfreakerstuff.com/2012/10/50-awesome-useful-android-custom-button-
 
     <stroke
         android:width="3dp"
-        android:color="22ff00" />
+        android:color="#22ff00" />
 
 </shape>
