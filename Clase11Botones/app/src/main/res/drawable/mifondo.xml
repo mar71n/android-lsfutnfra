@@ -1,0 +1,21 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!--
+ https://developer.android.com/guide/topics/resources/drawable-resource.html#Shape
+http://www.mindfreakerstuff.com/2012/10/50-awesome-useful-android-custom-button-style-set-2/
+ -->
+
+<shape xmlns:android="http://schemas.android.com/apk/res/android"
+    android:shape="rectangle">
+
+    <gradient
+        android:startColor="#aa0000"
+        android:endColor="#00aa00"
+        android:angle="270" />
+
+    <corners android:radius="23dp" />
+
+    <stroke
+        android:width="3dp"
+        android:color="22ff00" />
+
+</shape>
