@@ -34,4 +34,16 @@ public class MyScreenSlidePagerAdapter extends FragmentStatePagerAdapter
     {
         return NUM_PAGES;
     }
+
+    // Devolvemos el titulo de cada Fragment
+    @Override
+    public CharSequence getPageTitle(int position)
+    {
+        switch(position)
+        {
+            case 0: return "Información";
+            case 1: return "Niveles";
+            default: return "Ayuda";
+        }
+    }
 }
