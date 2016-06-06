@@ -1,5 +1,6 @@
 package utn.curso.mar71n.tpijuegomemoria;
 
+import android.content.Intent;
 import android.os.Bundle;
 import android.support.design.widget.FloatingActionButton;
 import android.support.design.widget.NavigationView;
@@ -89,6 +90,10 @@ public class MainActivity extends AppCompatActivity implements NavigationView.On
         }
         if (id == R.id.drawer_item_ayuda){
             viewPager.setCurrentItem(2);
+        }
+        if (id == R.id.drawer_item_jugar){
+            Intent i = new Intent(this,TableroJMActivity.class);
+            startActivity(i);
         }
         drawer.closeDrawer(GravityCompat.START);
         return true;
