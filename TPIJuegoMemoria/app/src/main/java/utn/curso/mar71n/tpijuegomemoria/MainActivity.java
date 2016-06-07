@@ -13,20 +13,13 @@ import android.support.v4.widget.DrawerLayout;
 import android.support.v7.app.ActionBarDrawerToggle;
 import android.support.v7.app.AppCompatActivity;
 import android.support.v7.widget.Toolbar;
-import android.util.Log;
 import android.view.View;
 import android.view.Menu;
 import android.view.MenuItem;
 
-import java.util.ArrayList;
-import java.util.Collections;
-import java.util.List;
-
 public class MainActivity extends AppCompatActivity implements NavigationView.OnNavigationItemSelectedListener {
     private ViewPager viewPager;
     private DrawerLayout drawer;
-    List<Ficha> fichas;
-    MyAdapter adapter;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -61,21 +54,6 @@ public class MainActivity extends AppCompatActivity implements NavigationView.On
 
         NavigationView navigationView = (NavigationView) findViewById(R.id.nav_view);
         navigationView.setNavigationItemSelectedListener(this);
-
-        fichas = new ArrayList<Ficha>();
-        fichas.add(new Ficha(Ficha.TAPADA,R.drawable.img_1));
-        fichas.add(new Ficha(Ficha.TAPADA,R.drawable.img_1));
-        fichas.add(new Ficha(Ficha.TAPADA,R.drawable.img_2));
-        fichas.add(new Ficha(Ficha.TAPADA,R.drawable.img_2));
-        fichas.add(new Ficha(Ficha.TAPADA,R.drawable.img_3));
-        fichas.add(new Ficha(Ficha.TAPADA,R.drawable.img_3));
-        fichas.add(new Ficha(Ficha.TAPADA,R.drawable.img_4));
-        fichas.add(new Ficha(Ficha.TAPADA,R.drawable.img_4));
-        fichas.add(new Ficha(Ficha.TAPADA,R.drawable.img_5));
-        fichas.add(new Ficha(Ficha.TAPADA,R.drawable.img_5));
-        fichas.add(new Ficha(Ficha.TAPADA,R.drawable.img_6));
-        fichas.add(new Ficha(Ficha.TAPADA,R.drawable.img_6));
-        Collections.shuffle(fichas);
 
     }
 
@@ -120,4 +98,5 @@ public class MainActivity extends AppCompatActivity implements NavigationView.On
         drawer.closeDrawer(GravityCompat.START);
         return true;
     }
+
 }
