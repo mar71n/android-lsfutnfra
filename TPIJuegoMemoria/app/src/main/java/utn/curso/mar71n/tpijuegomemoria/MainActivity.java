@@ -18,9 +18,14 @@ import android.view.View;
 import android.view.Menu;
 import android.view.MenuItem;
 
+import java.util.List;
+
 public class MainActivity extends AppCompatActivity implements NavigationView.OnNavigationItemSelectedListener {
     private ViewPager viewPager;
     private DrawerLayout drawer;
+    List<Ficha> fichas;
+    MyAdapter adapter;
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
