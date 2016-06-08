@@ -6,6 +6,8 @@ import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.util.Log;
 
+import java.util.ArrayList;
+
 public class MainActivity extends AppCompatActivity {
 
     @Override
@@ -17,6 +19,15 @@ public class MainActivity extends AppCompatActivity {
 
         SQLiteDatabase db =  helper.getWritableDatabase();
 
+        PersonaDAO dao = new PersonaDAO(db);
+
+        ArrayList<Persona> lista = dao.getAll();
+
+        for(Persona p : lista){
+            Log.d("act",p.getNombre() + " edad: " + p.getEdad());
+        }
+
+        /*
         Cursor c;
 
         c = db.rawQuery("SELECT _id,nombre,edad FROM Personas WHERE _id=1",null);
@@ -32,6 +43,7 @@ public class MainActivity extends AppCompatActivity {
         c.close();
         db.close();
         helper.close();
+        */
 
     }
 }
