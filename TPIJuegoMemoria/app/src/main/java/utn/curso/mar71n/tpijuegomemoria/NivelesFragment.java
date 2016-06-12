@@ -5,6 +5,7 @@ import android.support.v4.app.Fragment;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.RadioButton;
 
 import utn.curso.mar71n.tpijuegomemoria.R;
 
@@ -25,6 +26,15 @@ public class NivelesFragment extends Fragment {
         // Cargamos la View con contenido, seteamos listeners, etc.
         //...
 
+        RadioButton n1 = (RadioButton) rootView.findViewById(R.id.radioButtonN1);
+        RadioButton n2 = (RadioButton) rootView.findViewById(R.id.radioButtonN2);
+        RadioButton n3 = (RadioButton) rootView.findViewById(R.id.radioButtonN3);
+        NivelesFragmentListener nfl = new NivelesFragmentListener(n1, n2, n3);
+        n1.setOnClickListener(nfl);
+        n2.setOnClickListener(nfl);
+        n3.setOnClickListener(nfl);
+
         return rootView;
     }
+
 }
