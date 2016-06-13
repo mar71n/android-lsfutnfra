@@ -20,13 +20,15 @@ public class MyScreenSlidePagerAdapter extends FragmentStatePagerAdapter
     public Fragment getItem(int position)
     {
         // Segun la posicion, creo el fragment correspondiente y lo devuelvo
+        Fragment retFragmen;
         switch(position)
         {
-            case 0 : return new InfoFragment();
-            case 1 : return new NivelesFragment();
-            case 2 : return new AyudaFragment();
+            case 0 : retFragmen = new InfoFragment(); break;
+            case 1 : retFragmen = new NivelesFragment(); break;
+            case 2 : retFragmen = new AyudaFragment(); break;
+            default: return null;
         }
-        return null;
+        return  retFragmen;
     }
 
     @Override

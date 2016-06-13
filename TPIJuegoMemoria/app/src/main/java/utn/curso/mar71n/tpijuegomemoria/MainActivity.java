@@ -20,6 +20,7 @@ import android.view.MenuItem;
 public class MainActivity extends AppCompatActivity implements NavigationView.OnNavigationItemSelectedListener {
     private ViewPager viewPager;
     private DrawerLayout drawer;
+    private int nivel;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {

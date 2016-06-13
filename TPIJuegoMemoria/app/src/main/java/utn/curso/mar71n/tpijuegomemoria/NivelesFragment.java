@@ -7,8 +7,6 @@ import android.view.View;
 import android.view.ViewGroup;
 import android.widget.RadioButton;
 
-import utn.curso.mar71n.tpijuegomemoria.R;
-
 /**
  * Created by android on 31/05/16.
  */

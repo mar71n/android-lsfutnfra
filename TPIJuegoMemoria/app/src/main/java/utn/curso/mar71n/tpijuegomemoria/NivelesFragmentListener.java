@@ -1,12 +1,8 @@
 package utn.curso.mar71n.tpijuegomemoria;
 
-import android.content.Context;
-import android.content.SharedPreferences;
-import android.support.v4.content.SharedPreferencesCompat;
 import android.util.Log;
 import android.view.View;
 import android.widget.RadioButton;
-import android.widget.RadioGroup;
 
 /**
  * Created by Usuario on 12/6/2016.
@@ -35,4 +31,5 @@ public class NivelesFragmentListener implements View.OnClickListener {
             Log.d("NFListener : ", "nivel 03");
         }
     }
+
 }
