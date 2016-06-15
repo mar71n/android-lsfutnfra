@@ -1,8 +1,12 @@
-package utn.curso.mar71n.tpijuegomemoria;
+package utn.curso.mar71n.tpijuegomemoria.main;
 
 import android.support.v4.app.Fragment;
 import android.support.v4.app.FragmentManager;
 import android.support.v4.app.FragmentStatePagerAdapter;
+
+import utn.curso.mar71n.tpijuegomemoria.haigscores.AyudaFragment;
+import utn.curso.mar71n.tpijuegomemoria.inicio.InfoFragment;
+import utn.curso.mar71n.tpijuegomemoria.niveles.NivelesFragment;
 
 /**
  * Created by android on 31/05/16.

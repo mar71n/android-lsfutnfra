@@ -1,4 +1,4 @@
-package utn.curso.mar71n.tpijuegomemoria;
+package utn.curso.mar71n.tpijuegomemoria.inicio;
 
 import android.os.Bundle;
 import android.support.v4.app.Fragment;
@@ -11,7 +11,7 @@ import utn.curso.mar71n.tpijuegomemoria.R;
 /**
  * Created by android on 31/05/16.
  */
-public class AyudaFragment extends Fragment {
+public class InfoFragment extends Fragment {
 
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container,Bundle
@@ -19,7 +19,7 @@ public class AyudaFragment extends Fragment {
 
         // Creamos la View para este fragment y la devolvemos
         ViewGroup rootView = (ViewGroup)
-                inflater.inflate(R.layout.layout_ayuda,
+                inflater.inflate(R.layout.layout_informacion,
                         container, false);
 
         // Cargamos la View con contenido, seteamos listeners, etc.

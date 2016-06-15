@@ -1,4 +1,4 @@
-package utn.curso.mar71n.tpijuegomemoria;
+package utn.curso.mar71n.tpijuegomemoria.tablero;
 
 import android.support.v7.widget.RecyclerView.Adapter;
 import android.view.LayoutInflater;
@@ -6,6 +6,8 @@ import android.view.View;
 import android.view.ViewGroup;
 
 import java.util.List;
+
+import utn.curso.mar71n.tpijuegomemoria.R;
 
 public class MyAdapter extends Adapter<MyViewHolder> {
 

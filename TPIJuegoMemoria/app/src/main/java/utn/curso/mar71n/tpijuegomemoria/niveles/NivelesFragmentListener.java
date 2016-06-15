@@ -1,8 +1,10 @@
-package utn.curso.mar71n.tpijuegomemoria;
+package utn.curso.mar71n.tpijuegomemoria.niveles;
 
 import android.util.Log;
 import android.view.View;
 import android.widget.RadioButton;
+
+import utn.curso.mar71n.tpijuegomemoria.R;
 
 /**
  * Created by Usuario on 12/6/2016.

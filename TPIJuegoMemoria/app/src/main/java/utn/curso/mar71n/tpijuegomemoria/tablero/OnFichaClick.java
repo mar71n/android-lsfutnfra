@@ -1,4 +1,4 @@
-package utn.curso.mar71n.tpijuegomemoria;
+package utn.curso.mar71n.tpijuegomemoria.tablero;
 
 /**
  * Created by Ernesto on 27/01/2015.

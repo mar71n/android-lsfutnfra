@@ -1,4 +1,4 @@
-package utn.curso.mar71n.tpijuegomemoria;
+package utn.curso.mar71n.tpijuegomemoria.tablero;
 
 public class Ficha {
 
