@@ -8,6 +8,7 @@ import android.support.v7.app.AppCompatActivity;
 import android.support.v7.widget.GridLayoutManager;
 import android.support.v7.widget.RecyclerView;
 import android.util.Log;
+import android.widget.Toast;
 
 import java.util.ArrayList;
 import java.util.Collections;
@@ -26,6 +27,8 @@ public class TableroJMActivity extends AppCompatActivity implements OnFichaClick
     MyAdapter adapterf;
     private Handler h;
     private int nivel;
+    private int kmostradas;
+    private int[] parmostradas;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -35,6 +38,9 @@ public class TableroJMActivity extends AppCompatActivity implements OnFichaClick
         Intent intent = getIntent();
         Bundle extras = intent.getExtras();
         this.nivel = extras.getInt("nivel");
+
+        kmostradas = 0;
+        parmostradas = new int[2];
 
         fichas = new ArrayList<Ficha>();
         fichas.add(new Ficha(Ficha.TAPADA,R.drawable.img_1));
@@ -69,7 +75,25 @@ public class TableroJMActivity extends AppCompatActivity implements OnFichaClick
         Ficha f = fichas.get(position);
         //String t = "click en " + position + " stado : " + f.getEstado();
         //Toast.makeText(this, (CharSequence) t, Toast.LENGTH_SHORT).show();
-        f.setEstado(!f.getEstado());
+
+        if (f.getEstado() == Ficha.TAPADA) {
+            f.setEstado(Ficha.DESTAPADA);
+            kmostradas++;
+            parmostradas[kmostradas-1] =position;
+        }
+        if (kmostradas == 2){
+            Ficha f1 = fichas.get(parmostradas[0]);
+            Ficha f2 = fichas.get(parmostradas[1]);
+            if(f1.getImagen() == f2.getImagen()){
+                Toast.makeText(this, (CharSequence) "BIEN !!!", Toast.LENGTH_SHORT).show();
+            }else {
+                h = new Handler(this);
+                EsperarYTaparThread eyt = new EsperarYTaparThread(h, 1);
+                Thread t = new Thread(eyt);
+                t.start();
+            }
+            kmostradas = 0;
+        }
         adapterf.notifyItemChanged(position);
         // cambiar el estado de la ficha y refrescar la pantalla
     }
@@ -108,9 +132,17 @@ public class TableroJMActivity extends AppCompatActivity implements OnFichaClick
         Log.d("recivi", String.valueOf(msg.arg1));
         String senal = (String) msg.obj;
         switch (senal){
-            case "TaparTodas" : taparTodas();
+            case "TaparTodas" : taparTodas();break;
+            case "TaparDos" : taparDos();
         }
         adapterf.notifyDataSetChanged();
         return false;
+    }
+
+    private void taparDos() {
+        Ficha f1 = fichas.get(parmostradas[0]);
+        Ficha f2 = fichas.get(parmostradas[1]);
+        f1.setEstado(Ficha.TAPADA);
+        f2.setEstado(Ficha.TAPADA);
     }
 }
