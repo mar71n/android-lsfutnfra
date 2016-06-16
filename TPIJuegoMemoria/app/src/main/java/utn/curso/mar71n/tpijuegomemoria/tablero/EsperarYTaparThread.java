@@ -10,10 +10,14 @@ import android.util.Log;
 public class EsperarYTaparThread implements Runnable {
     private Handler h;
     private int pausa;
+    private String msgcallBack;
+    public static final String taparTodas = "TaparTodas";
+    public static final String taparDos = "TaparDos";
 
-    public EsperarYTaparThread(Handler h, int pausa){
+    public EsperarYTaparThread(Handler h, int pausa, String msgcallBack){
         this.h = h;
         this.pausa = pausa;
+        this.msgcallBack = msgcallBack;
     }
 
     @Override
@@ -24,13 +28,12 @@ public class EsperarYTaparThread implements Runnable {
             Log.d("theread", "salgo del theread");
             return;
         }
-        sendMensage("TaparDos");
+        sendMensage(msgcallBack);
 
     }
 
     private void sendMensage(String msg){
         Message message = new Message();
-        message.arg1 = 2;
         message.obj = msg;
         h.sendMessage(message);
     }

@@ -88,7 +88,7 @@ public class TableroJMActivity extends AppCompatActivity implements OnFichaClick
                 Toast.makeText(this, (CharSequence) "BIEN !!!", Toast.LENGTH_SHORT).show();
             }else {
                 h = new Handler(this);
-                EsperarYTaparThread eyt = new EsperarYTaparThread(h, 1);
+                EsperarYTaparThread eyt = new EsperarYTaparThread(h, 1, EsperarYTaparThread.taparDos);
                 Thread t = new Thread(eyt);
                 t.start();
             }
@@ -110,7 +110,7 @@ public class TableroJMActivity extends AppCompatActivity implements OnFichaClick
         adapterf.notifyDataSetChanged();
         Log.d("theread", "muestra");
         h = new Handler(this);
-        VoltearTodasThread vt = new VoltearTodasThread(h, pausa);
+        EsperarYTaparThread vt = new EsperarYTaparThread(h, pausa, EsperarYTaparThread.taparTodas);
         Thread t = new Thread(vt);
         t.start();
     }
@@ -132,8 +132,8 @@ public class TableroJMActivity extends AppCompatActivity implements OnFichaClick
         Log.d("recivi", String.valueOf(msg.arg1));
         String senal = (String) msg.obj;
         switch (senal){
-            case "TaparTodas" : taparTodas();break;
-            case "TaparDos" : taparDos();
+            case EsperarYTaparThread.taparTodas : taparTodas();break;
+            case EsperarYTaparThread.taparDos : taparDos();
         }
         adapterf.notifyDataSetChanged();
         return false;
