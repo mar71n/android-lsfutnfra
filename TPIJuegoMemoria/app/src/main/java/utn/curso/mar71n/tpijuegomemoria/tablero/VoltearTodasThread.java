@@ -10,26 +10,29 @@ import android.util.Log;
  */
 public class VoltearTodasThread implements Runnable {
     private Handler h;
+    private int pausa;
 
-    public VoltearTodasThread(Handler h){
+    public VoltearTodasThread(Handler h, int pausa){
         this.h = h;
+        this.pausa = pausa;
     }
 
     @Override
     public void run() {
         try {
-            Thread.sleep(3000);
+            Thread.sleep(pausa * 1000);
         } catch (InterruptedException e) {
             Log.d("theread", "salgo del theread");
             return;
         }
-        sendMensage("pasaron 3");
+        sendMensage("TaparTodas");
 
     }
 
     private void sendMensage(String msg){
         Message message = new Message();
         message.arg1 = 1;
+        message.obj = msg;
         h.sendMessage(message);
     }
 }

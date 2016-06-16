@@ -96,6 +96,7 @@ public class MainActivity extends AppCompatActivity implements NavigationView.On
         }
         if (id == R.id.drawer_item_jugar){
             Intent i = new Intent(this,TableroJMActivity.class);
+            i.putExtra("nivel",2);
             startActivity(i);
         }
         drawer.closeDrawer(GravityCompat.START);

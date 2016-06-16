@@ -1,5 +1,6 @@
 package utn.curso.mar71n.tpijuegomemoria.tablero;
 
+import android.content.Intent;
 import android.os.Bundle;
 import android.os.Handler;
 import android.os.Message;
@@ -24,11 +25,16 @@ public class TableroJMActivity extends AppCompatActivity implements OnFichaClick
     List<Ficha> fichas;
     MyAdapter adapterf;
     private Handler h;
+    private int nivel;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_tablero);
+
+        Intent intent = getIntent();
+        Bundle extras = intent.getExtras();
+        this.nivel = extras.getInt("nivel");
 
         fichas = new ArrayList<Ficha>();
         fichas.add(new Ficha(Ficha.TAPADA,R.drawable.img_1));
@@ -69,10 +75,18 @@ public class TableroJMActivity extends AppCompatActivity implements OnFichaClick
     }
 
     private void iniciar(){
+        int pausa;
+        switch (nivel){
+            case 1 : pausa = 3; break;
+            case 2 : pausa = 5; break;
+            case 3 : pausa = 10; break;
+            default: pausa = 3;
+        }
         mostrarTodas();
+        adapterf.notifyDataSetChanged();
         Log.d("theread", "muestra");
         h = new Handler(this);
-        VoltearTodasThread vt = new VoltearTodasThread(h);
+        VoltearTodasThread vt = new VoltearTodasThread(h, pausa);
         Thread t = new Thread(vt);
         t.start();
     }
@@ -92,7 +106,10 @@ public class TableroJMActivity extends AppCompatActivity implements OnFichaClick
     @Override
     public boolean handleMessage(Message msg) {
         Log.d("recivi", String.valueOf(msg.arg1));
-        taparTodas();
+        String senal = (String) msg.obj;
+        switch (senal){
+            case "TaparTodas" : taparTodas();
+        }
         adapterf.notifyDataSetChanged();
         return false;
     }
