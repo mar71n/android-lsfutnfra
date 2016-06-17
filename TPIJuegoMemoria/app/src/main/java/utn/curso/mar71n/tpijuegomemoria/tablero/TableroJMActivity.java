@@ -34,6 +34,7 @@ public class TableroJMActivity extends AppCompatActivity implements OnFichaClick
     private int nivel;
     private int kmostradas;
     private int[] parmostradas;
+    private FloatingActionButton fabT;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -45,12 +46,13 @@ public class TableroJMActivity extends AppCompatActivity implements OnFichaClick
         setSupportActionBar(toolbart);
         ActionBar ab = getSupportActionBar();
         ab.setDisplayHomeAsUpEnabled(true);
-        FloatingActionButton fabT = (FloatingActionButton) findViewById(R.id.fabT);
+        fabT = (FloatingActionButton) findViewById(R.id.fabT);
+        fabT.setClickable(true);
         fabT.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                Snackbar.make(view, "Replace with your own action", Snackbar.LENGTH_LONG)
-                        .setAction("Action", null).show();
+                fabT.setClickable(false);
+                iniciar();
             }
         });
 
@@ -86,7 +88,6 @@ public class TableroJMActivity extends AppCompatActivity implements OnFichaClick
         adapterf = new MyAdapter(fichas,this);
         list.setAdapter(adapterf);
 
-        iniciar();
 
 
     }
@@ -95,26 +96,28 @@ public class TableroJMActivity extends AppCompatActivity implements OnFichaClick
         Ficha f = fichas.get(position);
         //String t = "click en " + position + " stado : " + f.getEstado();
         //Toast.makeText(this, (CharSequence) t, Toast.LENGTH_SHORT).show();
-
-        if (f.getEstado() == Ficha.TAPADA) {
-            f.setEstado(Ficha.DESTAPADA);
-            kmostradas++;
-            parmostradas[kmostradas-1] =position;
+        if (kmostradas < 2) {
+            if (f.getEstado() == Ficha.TAPADA) {
+                f.setEstado(Ficha.DESTAPADA);
+                adapterf.notifyItemChanged(position);
+                kmostradas++;
+                parmostradas[kmostradas - 1] = position;
+            }
         }
-        if (kmostradas == 2){
+        if (kmostradas == 2) {
             Ficha f1 = fichas.get(parmostradas[0]);
             Ficha f2 = fichas.get(parmostradas[1]);
-            if(f1.getImagen() == f2.getImagen()){
+            if (f1.getImagen() == f2.getImagen()) {
+                kmostradas = 0;
                 Toast.makeText(this, (CharSequence) "BIEN !!!", Toast.LENGTH_SHORT).show();
-            }else {
+            } else {
                 h = new Handler(this);
                 EsperarYTaparThread eyt = new EsperarYTaparThread(h, 1, EsperarYTaparThread.taparDos);
                 Thread t = new Thread(eyt);
                 t.start();
             }
-            kmostradas = 0;
         }
-        adapterf.notifyItemChanged(position);
+        //adapterf.notifyItemChanged(position);
         // cambiar el estado de la ficha y refrescar la pantalla
     }
 
@@ -164,5 +167,6 @@ public class TableroJMActivity extends AppCompatActivity implements OnFichaClick
         Ficha f2 = fichas.get(parmostradas[1]);
         f1.setEstado(Ficha.TAPADA);
         f2.setEstado(Ficha.TAPADA);
+        kmostradas = 0;
     }
 }
