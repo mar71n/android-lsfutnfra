@@ -35,8 +35,7 @@ public class MainActivity extends AppCompatActivity implements NavigationView.On
         fab.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                Snackbar.make(view, "Replace with your own action", Snackbar.LENGTH_LONG)
-                        .setAction("Action", null).show();
+                jugar();
             }
         });
         // obtengo el ViewPager
@@ -95,12 +94,16 @@ public class MainActivity extends AppCompatActivity implements NavigationView.On
             viewPager.setCurrentItem(2);
         }
         if (id == R.id.drawer_item_jugar){
-            Intent i = new Intent(this,TableroJMActivity.class);
-            i.putExtra("nivel",2);
-            startActivity(i);
+            jugar();
         }
         drawer.closeDrawer(GravityCompat.START);
         return true;
+    }
+
+    private void jugar(){
+        Intent i = new Intent(this,TableroJMActivity.class);
+        i.putExtra("nivel",2);
+        startActivity(i);
     }
 
 }
