@@ -19,7 +19,8 @@
             </intent-filter>
         </activity>
         <activity android:name=".tablero.TableroJMActivity"
-            android:label="Juego de la Memoria"/>
+            android:label="Juego de la Memoria"
+            android:theme="@style/AppTheme.NoActionBar"/>
     </application>
 
 </manifest>
