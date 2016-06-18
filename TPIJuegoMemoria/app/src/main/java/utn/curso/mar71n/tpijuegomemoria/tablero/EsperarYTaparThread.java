@@ -35,6 +35,7 @@ public class EsperarYTaparThread implements Runnable {
     private void sendMensage(String msg){
         Message message = new Message();
         message.obj = msg;
+        message.arg1 = 1;
         h.sendMessage(message);
     }
 

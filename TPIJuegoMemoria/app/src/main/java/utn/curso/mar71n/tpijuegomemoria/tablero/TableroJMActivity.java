@@ -13,6 +13,7 @@ import android.support.v7.widget.RecyclerView;
 import android.support.v7.widget.Toolbar;
 import android.util.Log;
 import android.view.View;
+import android.widget.TextView;
 import android.widget.Toast;
 
 import java.util.ArrayList;
@@ -35,11 +36,15 @@ public class TableroJMActivity extends AppCompatActivity implements OnFichaClick
     private int kmostradas;
     private int[] parmostradas;
     private FloatingActionButton fabT;
+    private TextView txtTiempo;
+    Thread tseg;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_tablero);
+
+        txtTiempo = (TextView) findViewById(R.id.textVTiempo);
 
         Toolbar toolbart = (Toolbar) findViewById(R.id.toolbarT);
         toolbart.setTitle("Memo Test");
@@ -152,14 +157,23 @@ public class TableroJMActivity extends AppCompatActivity implements OnFichaClick
 
     @Override
     public boolean handleMessage(Message msg) {
-        Log.d("recivi", String.valueOf(msg.arg1));
-        String senal = (String) msg.obj;
-        switch (senal){
-            case EsperarYTaparThread.taparTodas : taparTodas();break;
-            case EsperarYTaparThread.taparDos : taparDos();
+        //Log.d("THREAD ", "a1 : " + msg.arg1 + " a2 : " + msg.arg2);
+        if(msg.arg1 == 1) {
+            String senal = (String) msg.obj;
+            switch (senal) {
+                case EsperarYTaparThread.taparTodas:
+                    taparTodas();arrancarSegundero();
+                    break;
+                case EsperarYTaparThread.taparDos:
+                    taparDos();
+            }
+            adapterf.notifyDataSetChanged();
+            return false;
+        }else {
+            txtTiempo.setText("Tiempo : " + msg.arg2);
+            adapterf.notifyDataSetChanged();
+            return false;
         }
-        adapterf.notifyDataSetChanged();
-        return false;
     }
 
     private void taparDos() {
@@ -168,5 +182,19 @@ public class TableroJMActivity extends AppCompatActivity implements OnFichaClick
         f1.setEstado(Ficha.TAPADA);
         f2.setEstado(Ficha.TAPADA);
         kmostradas = 0;
+    }
+
+    @Override
+    protected void onDestroy() {
+        tseg.interrupt();
+        super.onDestroy();
+    }
+
+    private void arrancarSegundero(){
+        Handler h = new Handler(this);
+        SegunderoThread segunderoThread = new SegunderoThread(h);
+        tseg = new Thread(segunderoThread);
+        tseg.start();
+
     }
 }
