@@ -32,12 +32,15 @@ public class TableroJMActivity extends AppCompatActivity implements OnFichaClick
     List<Ficha> fichas;
     MyAdapter adapterf;
     private Handler h;
-    private int nivel;
+    private int nivel; // nivel de dificultad
     private int kmostradas;
     private int[] parmostradas;
     private FloatingActionButton fabT;
     private TextView txtTiempo;
-    Thread tseg;
+    Thread tseg;  // thread cuenta segundos
+    int pares; // cuantas pares de fichas hay
+    int paresOk; // cuantos pares de fichas encontrados
+    int segundos; // segundos de juego
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -45,6 +48,9 @@ public class TableroJMActivity extends AppCompatActivity implements OnFichaClick
         setContentView(R.layout.activity_tablero);
 
         txtTiempo = (TextView) findViewById(R.id.textVTiempo);
+        pares = 6;
+        paresOk = 0;
+        segundos = 0;
 
         Toolbar toolbart = (Toolbar) findViewById(R.id.toolbarT);
         toolbart.setTitle("Memo Test");
@@ -114,12 +120,17 @@ public class TableroJMActivity extends AppCompatActivity implements OnFichaClick
             Ficha f2 = fichas.get(parmostradas[1]);
             if (f1.getImagen() == f2.getImagen()) {
                 kmostradas = 0;
+                paresOk++;
                 Toast.makeText(this, (CharSequence) "BIEN !!!", Toast.LENGTH_SHORT).show();
             } else {
                 h = new Handler(this);
                 EsperarYTaparThread eyt = new EsperarYTaparThread(h, 1, EsperarYTaparThread.taparDos);
                 Thread t = new Thread(eyt);
                 t.start();
+            }
+            if(pares == paresOk){
+                String ganaste = "Bien !!! segundos: " + segundos;
+                Toast.makeText(this, (CharSequence) ganaste, Toast.LENGTH_SHORT).show();
             }
         }
         //adapterf.notifyItemChanged(position);
@@ -170,7 +181,8 @@ public class TableroJMActivity extends AppCompatActivity implements OnFichaClick
             adapterf.notifyDataSetChanged();
             return false;
         }else {
-            txtTiempo.setText("Tiempo : " + msg.arg2);
+            segundos = msg.arg2;
+            txtTiempo.setText("Tiempo : " + segundos);
             adapterf.notifyDataSetChanged();
             return false;
         }
