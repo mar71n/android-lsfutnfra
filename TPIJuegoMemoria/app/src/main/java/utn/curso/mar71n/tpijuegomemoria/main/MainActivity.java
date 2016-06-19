@@ -20,9 +20,10 @@ import android.view.MenuItem;
 import utn.curso.mar71n.tpijuegomemoria.R;
 import utn.curso.mar71n.tpijuegomemoria.tablero.TableroJMActivity;
 
-public class MainActivity extends AppCompatActivity implements NavigationView.OnNavigationItemSelectedListener {
+public class MainActivity extends AppCompatActivity implements NavigationView.OnNavigationItemSelectedListener, INiveles {
     private ViewPager viewPager;
     private DrawerLayout drawer;
+    private int nivel;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -30,6 +31,8 @@ public class MainActivity extends AppCompatActivity implements NavigationView.On
         setContentView(R.layout.activity_main);
         Toolbar toolbar = (Toolbar) findViewById(R.id.toolbar);
         setSupportActionBar(toolbar);
+
+        nivel = 2;
 
         FloatingActionButton fab = (FloatingActionButton) findViewById(R.id.fab);
         fab.setOnClickListener(new View.OnClickListener() {
@@ -102,8 +105,18 @@ public class MainActivity extends AppCompatActivity implements NavigationView.On
 
     private void jugar(){
         Intent i = new Intent(this,TableroJMActivity.class);
-        i.putExtra("nivel",2);
+        i.putExtra("nivel",nivel);
         startActivity(i);
+    }
+
+    @Override
+    public int getNivel(){
+        return nivel;
+    }
+
+    @Override
+    public void setNivel(int n){
+        nivel = n;
     }
 
 }
