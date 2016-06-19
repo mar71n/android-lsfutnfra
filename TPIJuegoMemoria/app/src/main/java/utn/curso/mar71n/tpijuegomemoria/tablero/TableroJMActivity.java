@@ -49,8 +49,6 @@ public class TableroJMActivity extends AppCompatActivity implements OnFichaClick
 
         txtTiempo = (TextView) findViewById(R.id.textVTiempo);
         pares = 6;
-        paresOk = 0;
-        segundos = 0;
 
         Toolbar toolbart = (Toolbar) findViewById(R.id.toolbarT);
         toolbart.setTitle("Memo Test");
@@ -87,8 +85,8 @@ public class TableroJMActivity extends AppCompatActivity implements OnFichaClick
         fichas.add(new Ficha(Ficha.TAPADA,R.drawable.img_5));
         fichas.add(new Ficha(Ficha.TAPADA,R.drawable.img_5));
         fichas.add(new Ficha(Ficha.TAPADA,R.drawable.img_6));
-        fichas.add(new Ficha(Ficha.TAPADA,R.drawable.img_6));
-        Collections.shuffle(fichas);
+        fichas.add(new Ficha(Ficha.TAPADA, R.drawable.img_6));
+
 
         RecyclerView list = (RecyclerView)findViewById(R.id.list);
 
@@ -129,8 +127,10 @@ public class TableroJMActivity extends AppCompatActivity implements OnFichaClick
                 t.start();
             }
             if(pares == paresOk){
+                tseg.interrupt();
                 String ganaste = "Bien !!! segundos: " + segundos;
                 Toast.makeText(this, (CharSequence) ganaste, Toast.LENGTH_SHORT).show();
+                fabT.setClickable(true);
             }
         }
         //adapterf.notifyItemChanged(position);
@@ -138,6 +138,9 @@ public class TableroJMActivity extends AppCompatActivity implements OnFichaClick
     }
 
     private void iniciar(){
+        Collections.shuffle(fichas);
+        paresOk = 0;
+        segundos = 0;
         int pausa;
         switch (nivel){
             case 1 : pausa = 3; break;
