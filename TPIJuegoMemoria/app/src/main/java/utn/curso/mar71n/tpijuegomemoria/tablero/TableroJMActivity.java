@@ -201,7 +201,10 @@ public class TableroJMActivity extends AppCompatActivity implements OnFichaClick
 
     @Override
     protected void onDestroy() {
-        tseg.interrupt();
+        if (tseg != null) {
+            Log.d("th", "lo pare porque existe");
+            tseg.interrupt();
+        }else {Log.d("th", "NO existe");}
         super.onDestroy();
     }
 
