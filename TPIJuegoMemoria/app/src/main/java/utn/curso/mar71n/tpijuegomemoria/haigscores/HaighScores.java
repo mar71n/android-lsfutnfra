@@ -4,25 +4,16 @@ package utn.curso.mar71n.tpijuegomemoria.haigscores;
  * Created by Usuario on 20/6/2016.
  */
 public class HaighScores {
-    private int id;
-    private int puesto;
+    private long id;
     private int tiempo;
     private String nombre;
 
-    public int getId() {
+    public long getId() {
         return id;
     }
 
-    public void setId(int id) {
+    public void setId(long id) {
         this.id = id;
-    }
-
-    public int getPuesto() {
-        return puesto;
-    }
-
-    public void setPuesto(int puesto) {
-        this.puesto = puesto;
     }
 
     public int getTiempo() {
