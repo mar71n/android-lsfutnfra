@@ -14,9 +14,6 @@
             android:id="@+id/drawer_item_records"
             android:title="Records"/>
         <item
-            android:id="@+id/drawer_item_ayuda"
-            android:title="Ayuda"/>
-        <item
             android:id="@+id/drawer_item_presentacion"
             android:title="Presentación"/>
     </group>

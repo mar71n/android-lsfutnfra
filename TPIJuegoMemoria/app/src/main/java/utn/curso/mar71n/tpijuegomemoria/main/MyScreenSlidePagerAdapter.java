@@ -49,7 +49,7 @@ public class MyScreenSlidePagerAdapter extends FragmentStatePagerAdapter
         {
             case 0: return "Información";
             case 1: return "Niveles";
-            default: return "Ayuda";
+            default: return "Haigh Scores";
         }
     }
 }

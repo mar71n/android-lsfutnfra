@@ -93,7 +93,7 @@ public class MainActivity extends AppCompatActivity implements NavigationView.On
         if (id == R.id.drawer_item_niveles){
             viewPager.setCurrentItem(1);
         }
-        if (id == R.id.drawer_item_ayuda){
+        if (id == R.id.drawer_item_records){
             viewPager.setCurrentItem(2);
         }
         if (id == R.id.drawer_item_jugar){
