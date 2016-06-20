@@ -4,7 +4,7 @@ import android.support.v4.app.Fragment;
 import android.support.v4.app.FragmentManager;
 import android.support.v4.app.FragmentStatePagerAdapter;
 
-import utn.curso.mar71n.tpijuegomemoria.haigscores.AyudaFragment;
+import utn.curso.mar71n.tpijuegomemoria.haigscores.HScoresFragment;
 import utn.curso.mar71n.tpijuegomemoria.inicio.InfoFragment;
 import utn.curso.mar71n.tpijuegomemoria.niveles.NivelesFragment;
 
@@ -29,7 +29,7 @@ public class MyScreenSlidePagerAdapter extends FragmentStatePagerAdapter
         {
             case 0 : retFragmen = new InfoFragment(); break;
             case 1 : retFragmen = new NivelesFragment(); break;
-            case 2 : retFragmen = new AyudaFragment(); break;
+            case 2 : retFragmen = new HScoresFragment(); break;
             default: return null;
         }
         return  retFragmen;
