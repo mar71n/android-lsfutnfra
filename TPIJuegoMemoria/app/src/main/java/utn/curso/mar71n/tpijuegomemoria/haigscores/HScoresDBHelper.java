@@ -50,7 +50,6 @@ public class HScoresDBHelper extends SQLiteOpenHelper {
     @Override
     public void onCreate(SQLiteDatabase db) {
         Log.d("HELPER","ejecuto onCreate");
-        db.execSQL(HaighScoresContract.SQL_DELETE_HSCORES);
         db.execSQL(HaighScoresContract.SQL_CREATE_HSCORES);
         db.execSQL(HaighScoresContract.SQL_INSERT_HSCORES);
     }

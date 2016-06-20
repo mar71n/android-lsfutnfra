@@ -43,12 +43,4 @@ public class HaighScoresContract {
     public static final String SQL_DELETE_HSCORES =
             "DROP TABLE IF EXISTS " + HaighScoresContract.ColumnsHS.TABLE_NAME;
 
-
-    private HScoresDBHelper datosHelper;
-    private SQLiteDatabase database;
-
-    public HaighScoresContract(Context context){
-        datosHelper = new HScoresDBHelper(context);
-        database = datosHelper.getWritableDatabase();
-    }
 }
