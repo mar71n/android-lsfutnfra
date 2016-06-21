@@ -1,8 +1,6 @@
 package utn.curso.mar71n.tpijuegomemoria.haigscores;
 
-import android.app.Activity;
-import android.support.v7.widget.RecyclerView;
-import android.util.Log;
+import android.support.v7.widget.RecyclerView.Adapter;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -14,7 +12,7 @@ import utn.curso.mar71n.tpijuegomemoria.R;
 /**
  * Created by Usuario on 20/6/2016.
  */
-public class HSAdapter extends RecyclerView.Adapter<HSViewHolder> {
+public class HSAdapter extends Adapter<HSViewHolder> {
     private List<HaighScores> lista;
 
     public HSAdapter(List<HaighScores> lista){

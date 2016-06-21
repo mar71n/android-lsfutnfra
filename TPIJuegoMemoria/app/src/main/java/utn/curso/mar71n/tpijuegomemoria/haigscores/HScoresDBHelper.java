@@ -1,5 +1,6 @@
 package utn.curso.mar71n.tpijuegomemoria.haigscores;
 
+import android.content.ContentValues;
 import android.content.Context;
 import android.database.Cursor;
 import android.database.sqlite.SQLiteDatabase;
@@ -46,6 +47,13 @@ public class HScoresDBHelper extends SQLiteOpenHelper {
         return lista;
     }
 
+    public void saveHS(HaighScores hs){
+        db = getReadableDatabase();
+        ContentValues values = new ContentValues();
+        values.put(HaighScoresContract.ColumnsHS.COLUMN_NAME_TIEMPO,hs.getTiempo());
+        values.put(HaighScoresContract.ColumnsHS.COLUMN_NAME_NOMBRE,hs.getNombre());
+        db.insert(HaighScoresContract.ColumnsHS.TABLE_NAME, null,values);
+    }
 
     @Override
     public void onCreate(SQLiteDatabase db) {
