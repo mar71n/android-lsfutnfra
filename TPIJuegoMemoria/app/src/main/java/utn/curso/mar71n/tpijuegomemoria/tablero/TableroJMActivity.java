@@ -1,11 +1,12 @@
 package utn.curso.mar71n.tpijuegomemoria.tablero;
 
+import android.support.v4.app.FragmentManager;
+import android.app.DialogFragment;
 import android.content.Intent;
 import android.os.Bundle;
 import android.os.Handler;
 import android.os.Message;
 import android.support.design.widget.FloatingActionButton;
-import android.support.design.widget.Snackbar;
 import android.support.v7.app.ActionBar;
 import android.support.v7.app.AppCompatActivity;
 import android.support.v7.widget.GridLayoutManager;
@@ -16,31 +17,30 @@ import android.view.View;
 import android.widget.TextView;
 import android.widget.Toast;
 
+
 import java.util.ArrayList;
 import java.util.Collections;
 import java.util.List;
 
 import utn.curso.mar71n.tpijuegomemoria.R;
-import utn.curso.mar71n.tpijuegomemoria.tablero.Ficha;
-import utn.curso.mar71n.tpijuegomemoria.tablero.MyAdapter;
-import utn.curso.mar71n.tpijuegomemoria.tablero.OnFichaClick;
 
 /**
  * Created by Usuario on 6/6/2016.
  */
-public class TableroJMActivity extends AppCompatActivity implements OnFichaClick, Handler.Callback {
-    List<Ficha> fichas;
-    MyAdapter adapterf;
+public class TableroJMActivity extends AppCompatActivity implements OnFichaClick, Handler.Callback, INombre {
+    private List<Ficha> fichas;
+    private MyAdapter adapterf;
     private Handler h;
     private int nivel; // nivel de dificultad
     private int kmostradas;
     private int[] parmostradas;
     private FloatingActionButton fabT;
     private TextView txtTiempo;
-    Thread tseg;  // thread cuenta segundos
-    int pares; // cuantas pares de fichas hay
-    int paresOk; // cuantos pares de fichas encontrados
-    int segundos; // segundos de juego
+    private Thread tseg;  // thread cuenta segundos
+    private int pares; // cuantas pares de fichas hay
+    private int paresOk; // cuantos pares de fichas encontrados
+    private int segundos; // segundos de juego
+    private String nombre; // nombre de Haigh Score a guardar
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -131,6 +131,11 @@ public class TableroJMActivity extends AppCompatActivity implements OnFichaClick
                 String ganaste = "Bien !!! segundos: " + segundos;
                 Toast.makeText(this, (CharSequence) ganaste, Toast.LENGTH_SHORT).show();
                 fabT.setClickable(true);
+                android.support.v4.app.DialogFragment dialogFragment = new IngreseNombreDialogFragment();
+                Bundle b = new Bundle();
+                b.putInt("segundos",segundos);
+                dialogFragment.setArguments(b);
+                dialogFragment.show(getSupportFragmentManager(),"nombre");
             }
         }
         //adapterf.notifyItemChanged(position);
@@ -214,5 +219,10 @@ public class TableroJMActivity extends AppCompatActivity implements OnFichaClick
         tseg = new Thread(segunderoThread);
         tseg.start();
 
+    }
+
+    @Override
+    public void setNombre(String nombre) {
+        this.nombre = nombre;
     }
 }
