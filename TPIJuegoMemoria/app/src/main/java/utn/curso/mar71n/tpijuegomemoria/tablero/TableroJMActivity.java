@@ -1,7 +1,5 @@
 package utn.curso.mar71n.tpijuegomemoria.tablero;
 
-import android.support.v4.app.FragmentManager;
-import android.app.DialogFragment;
 import android.content.Intent;
 import android.os.Bundle;
 import android.os.Handler;
@@ -225,4 +223,5 @@ public class TableroJMActivity extends AppCompatActivity implements OnFichaClick
     public void setNombre(String nombre) {
         this.nombre = nombre;
     }
+
 }
