@@ -1,4 +1,4 @@
-package utn.curso.mar71n.tpijuegomemoria.inicio;
+package utn.curso.mar71n.tpijuegomemoria.splash;
 
 import android.os.Bundle;
 import android.support.v4.app.Fragment;

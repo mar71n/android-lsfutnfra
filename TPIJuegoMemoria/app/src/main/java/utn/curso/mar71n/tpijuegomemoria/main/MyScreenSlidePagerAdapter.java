@@ -5,7 +5,7 @@ import android.support.v4.app.FragmentManager;
 import android.support.v4.app.FragmentStatePagerAdapter;
 
 import utn.curso.mar71n.tpijuegomemoria.haigscores.HScoresFragment;
-import utn.curso.mar71n.tpijuegomemoria.inicio.InfoFragment;
+import utn.curso.mar71n.tpijuegomemoria.splash.InfoFragment;
 import utn.curso.mar71n.tpijuegomemoria.niveles.NivelesFragment;
 
 /**
