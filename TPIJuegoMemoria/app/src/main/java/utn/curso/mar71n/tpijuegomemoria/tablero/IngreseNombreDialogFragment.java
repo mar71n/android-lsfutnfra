@@ -18,8 +18,8 @@ import utn.curso.mar71n.tpijuegomemoria.R;
  * Created by mrampoldi on 21/06/2016.
  */
 public class IngreseNombreDialogFragment extends android.support.v4.app.DialogFragment
-        implements DialogInterface.OnClickListener, View.OnKeyListener {
-    EditText nombre;
+        implements DialogInterface.OnClickListener {
+    EditText etnombre;
     String snombre;
     @Override
     public Dialog onCreateDialog(Bundle savedInstanceState) {
@@ -32,36 +32,14 @@ public class IngreseNombreDialogFragment extends android.support.v4.app.DialogFr
         // Pass null as the parent view because its going in the dialog layout
         View v = inflater.inflate(R.layout.ingresenombre_layout, null);
         builder.setView(v);
-        builder.setPositiveButton("Aveptar", this);
-         /*
-        builder.setView(inflater.inflate(R.layout.ingresenombre_layout, null))
-                // Add action buttons
-                .setPositiveButton("Aceptar", new DialogInterface.OnClickListener() {
-                    @Override
-                    public void onClick(DialogInterface dialog, int id) {
-                        // sign in the user ...
-                        Log.d("DialogFrag", "nombre : ");
-                    }
-                });*/
+        builder.setPositiveButton("Aceptar", this);
+        etnombre = (EditText) v.findViewById(R.id.etnombrehs);
         return builder.create();
-    }
-    @Override
-    public void onViewCreated(View view, Bundle savedInstanceState)
-    {
-        super.onViewCreated(view, savedInstanceState);
-        nombre = (EditText) view.findViewById(R.id.nombrehs);
-        nombre.setOnKeyListener(this);
     }
 
     @Override
     public void onClick(DialogInterface dialog, int which) {
-        Log.d("listener", "nombre " + snombre);
-    }
-
-    @Override
-    public boolean onKey(View v, int keyCode, KeyEvent event) {
-        snombre = String.valueOf(nombre.getText());
-        return false;
+        Log.d("click aceptar", "nombe : " + etnombre.getText());
     }
 }
 
