@@ -1,6 +1,7 @@
 package utn.curso.mar71n.tpijuegomemoria.haigscores;
 
 import android.support.v7.widget.RecyclerView.Adapter;
+import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -41,7 +42,7 @@ public class HSAdapter extends Adapter<HSViewHolder> {
     public void onBindViewHolder(HSViewHolder holder, int position) {
         HaighScores hs = lista.get(position);
         holder.nombre.setText(hs.getNombre());
-        //holder.segundos.setText(hs.getTiempo());
+        holder.segundos.setText(String.valueOf(hs.getTiempo()) + " segundos.");
     }/**/
 
     @Override

@@ -37,7 +37,7 @@ public class HScoresFragment extends Fragment {
         //...
         Log.d("fragmet HS","PASO!!!");
 
-        HScoresDBHelper hsdbHelper = new HScoresDBHelper(this.getActivity());
+        HScoresDBHelper hsdbHelper = new HScoresDBHelper(getActivity().getBaseContext());
 
         /*
         HaighScores unhs = new HaighScores();
@@ -46,21 +46,19 @@ public class HScoresFragment extends Fragment {
         hsdbHelper.saveHS(unhs);
         */
 
-        ArrayList<HaighScores> lhaighScores = hsdbHelper.getAll();
+        List<HaighScores> lhaighScores = hsdbHelper.getAll();
 
         for(HaighScores hs : lhaighScores){
             Log.d("HS", "id : " + hs.getId() + " tiempo : " + hs.getTiempo() + " nombre : " + hs.getNombre());
         }
 
-
-
-        hsAdapter = new HSAdapter( lhaighScores);
-
         RecyclerView recyclerViewHS = (RecyclerView) rootView.findViewById(R.id.listaHS);
-        recyclerViewHS.setAdapter(hsAdapter);
 
         LinearLayoutManager l = new LinearLayoutManager(getActivity());
         recyclerViewHS.setLayoutManager(l);
+
+        hsAdapter = new HSAdapter( lhaighScores);
+        recyclerViewHS.setAdapter(hsAdapter);
 
         return rootView;
     }

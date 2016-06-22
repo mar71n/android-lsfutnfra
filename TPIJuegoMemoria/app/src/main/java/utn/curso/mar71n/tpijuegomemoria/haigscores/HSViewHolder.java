@@ -18,7 +18,7 @@ public class HSViewHolder extends RecyclerView.ViewHolder {
     public HSViewHolder(View itemView) {
         super(itemView);
         nombre = (TextView) itemView.findViewById(R.id.textViewNombre);
-        segundos = (TextView) itemView.findViewById(R.id.textVTiempo);
+        segundos = (TextView) itemView.findViewById(R.id.textViewSegundos);
         imagen = (ImageView) itemView.findViewById(R.id.imageViewHS);
     }
 
