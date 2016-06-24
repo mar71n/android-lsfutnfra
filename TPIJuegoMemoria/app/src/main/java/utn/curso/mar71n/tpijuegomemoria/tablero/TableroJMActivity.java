@@ -25,7 +25,7 @@ import utn.curso.mar71n.tpijuegomemoria.R;
 /**
  * Created by Usuario on 6/6/2016.
  */
-public class TableroJMActivity extends AppCompatActivity implements OnFichaClick, Handler.Callback, INombre {
+public class TableroJMActivity extends AppCompatActivity implements OnFichaClick, Handler.Callback {
     private List<Ficha> fichas;
     private MyAdapter adapterf;
     private Handler h;
@@ -38,7 +38,6 @@ public class TableroJMActivity extends AppCompatActivity implements OnFichaClick
     private int pares; // cuantas pares de fichas hay
     private int paresOk; // cuantos pares de fichas encontrados
     private int segundos; // segundos de juego
-    private String nombre; // nombre de Haigh Score a guardar
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -228,10 +227,4 @@ public class TableroJMActivity extends AppCompatActivity implements OnFichaClick
         dialogFragment.setArguments(b);
         dialogFragment.show(getSupportFragmentManager(),"nombre");
     }
-
-    @Override
-    public void setNombre(String nombre) {
-        this.nombre = nombre;
-    }
-
 }

@@ -20,7 +20,6 @@ import utn.curso.mar71n.tpijuegomemoria.main.MainActivity;
  * Created by android on 31/05/16.
  */
 public class NivelesFragment extends Fragment {
-    private int nivel;
 
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container,Bundle
