@@ -1,29 +1,27 @@
 package utn.curso.mar71n.tpijuegomemoria.tablero;
 
 import android.app.Dialog;
-import android.app.DialogFragment;
 import android.content.DialogInterface;
 import android.os.Bundle;
 import android.support.v7.app.AlertDialog;
-import android.util.Log;
-import android.view.KeyEvent;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.widget.EditText;
-import android.widget.TextView;
 
 import utn.curso.mar71n.tpijuegomemoria.R;
+import utn.curso.mar71n.tpijuegomemoria.haigscores.HScoresDBHelper;
+import utn.curso.mar71n.tpijuegomemoria.haigscores.HaighScores;
 
 /**
  * Created by mrampoldi on 21/06/2016.
  */
 public class IngreseNombreDialogFragment extends android.support.v4.app.DialogFragment
         implements DialogInterface.OnClickListener {
-    EditText etnombre;
-    String snombre;
+    private EditText etnombre;
+    private int segundos;
     @Override
     public Dialog onCreateDialog(Bundle savedInstanceState) {
-        snombre = "paso";
+        segundos = getArguments().getInt("segundos");
         AlertDialog.Builder builder = new AlertDialog.Builder(getActivity());
         // Get the layout inflater
         LayoutInflater inflater = getActivity().getLayoutInflater();
@@ -39,7 +37,11 @@ public class IngreseNombreDialogFragment extends android.support.v4.app.DialogFr
 
     @Override
     public void onClick(DialogInterface dialog, int which) {
-        Log.d("click aceptar", "nombe : " + etnombre.getText());
+        HScoresDBHelper dbHelper = new HScoresDBHelper(getContext());
+        HaighScores hs = new HaighScores();
+        hs.setNombre(String.valueOf(etnombre.getText()));
+        hs.setTiempo(segundos);
+        dbHelper.saveHS(hs);
     }
 }
 
