@@ -120,7 +120,7 @@ public class TableroJMActivity extends AppCompatActivity implements OnFichaClick
                 Toast.makeText(this, (CharSequence) "BIEN !!!", Toast.LENGTH_SHORT).show();
             } else {
                 h = new Handler(this);
-                EsperarYTaparThread eyt = new EsperarYTaparThread(h, 1, EsperarYTaparThread.taparDos);
+                EsperarYTareaThread eyt = new EsperarYTareaThread(h, 1, EsperarYTareaThread.taparDos);
                 Thread t = new Thread(eyt);
                 t.start();
             }
@@ -128,12 +128,10 @@ public class TableroJMActivity extends AppCompatActivity implements OnFichaClick
                 tseg.interrupt();
                 String ganaste = "Bien !!! segundos: " + segundos;
                 Toast.makeText(this, (CharSequence) ganaste, Toast.LENGTH_SHORT).show();
+                EsperarYTareaThread eyt = new EsperarYTareaThread(h, 2, EsperarYTareaThread.pedirNombre);
+                Thread t = new Thread(eyt);
+                t.start();
                 fabT.setClickable(true);
-                android.support.v4.app.DialogFragment dialogFragment = new IngreseNombreDialogFragment();
-                Bundle b = new Bundle();
-                b.putInt("segundos",segundos);
-                dialogFragment.setArguments(b);
-                dialogFragment.show(getSupportFragmentManager(),"nombre");
             }
         }
         //adapterf.notifyItemChanged(position);
@@ -155,7 +153,7 @@ public class TableroJMActivity extends AppCompatActivity implements OnFichaClick
         adapterf.notifyDataSetChanged();
         Log.d("theread", "muestra");
         h = new Handler(this);
-        EsperarYTaparThread vt = new EsperarYTaparThread(h, pausa, EsperarYTaparThread.taparTodas);
+        EsperarYTareaThread vt = new EsperarYTareaThread(h, pausa, EsperarYTareaThread.taparTodas);
         Thread t = new Thread(vt);
         t.start();
     }
@@ -175,22 +173,26 @@ public class TableroJMActivity extends AppCompatActivity implements OnFichaClick
     @Override
     public boolean handleMessage(Message msg) {
         //Log.d("THREAD ", "a1 : " + msg.arg1 + " a2 : " + msg.arg2);
-        if(msg.arg1 == 1) {
-            String senal = (String) msg.obj;
-            switch (senal) {
-                case EsperarYTaparThread.taparTodas:
-                    taparTodas();arrancarSegundero();
-                    break;
-                case EsperarYTaparThread.taparDos:
-                    taparDos();
-            }
-            adapterf.notifyDataSetChanged();
-            return false;
-        }else {
-            segundos = msg.arg2;
-            txtTiempo.setText("Tiempo : " + segundos);
-            adapterf.notifyDataSetChanged();
-            return false;
+        switch (msg.arg1){
+            case 1:
+                String senal = (String) msg.obj;
+                switch (senal) {
+                    case EsperarYTareaThread.taparTodas:
+                        taparTodas();arrancarSegundero();
+                        break;
+                    case EsperarYTareaThread.taparDos:
+                        taparDos();break;
+                    case EsperarYTareaThread.pedirNombre:
+                        pedirNombre();break;
+                }
+                adapterf.notifyDataSetChanged();
+                return false;
+            case 2:
+                segundos = msg.arg2;
+                txtTiempo.setText("Tiempo : " + segundos);
+                adapterf.notifyDataSetChanged();
+                return false;
+            default: return false;
         }
     }
 
@@ -217,6 +219,14 @@ public class TableroJMActivity extends AppCompatActivity implements OnFichaClick
         tseg = new Thread(segunderoThread);
         tseg.start();
 
+    }
+
+    private void pedirNombre(){
+        android.support.v4.app.DialogFragment dialogFragment = new IngreseNombreDialogFragment();
+        Bundle b = new Bundle();
+        b.putInt("segundos",segundos);
+        dialogFragment.setArguments(b);
+        dialogFragment.show(getSupportFragmentManager(),"nombre");
     }
 
     @Override

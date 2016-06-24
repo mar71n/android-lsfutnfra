@@ -7,14 +7,15 @@ import android.util.Log;
 /**
  * Created by mrampoldi on 16/06/2016.
  */
-public class EsperarYTaparThread implements Runnable {
+public class EsperarYTareaThread implements Runnable {
     private Handler h;
     private int pausa;
     private String msgcallBack;
     public static final String taparTodas = "TaparTodas";
     public static final String taparDos = "TaparDos";
+    public static final String pedirNombre = "PedirNombre";
 
-    public EsperarYTaparThread(Handler h, int pausa, String msgcallBack){
+    public EsperarYTareaThread(Handler h, int pausa, String msgcallBack){
         this.h = h;
         this.pausa = pausa;
         this.msgcallBack = msgcallBack;
