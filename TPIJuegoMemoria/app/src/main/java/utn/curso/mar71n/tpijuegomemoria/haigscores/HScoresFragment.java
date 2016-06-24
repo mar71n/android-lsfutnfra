@@ -1,6 +1,5 @@
 package utn.curso.mar71n.tpijuegomemoria.haigscores;
 
-import android.app.Activity;
 import android.os.Bundle;
 import android.support.v4.app.Fragment;
 import android.support.v7.widget.LinearLayoutManager;
@@ -10,12 +9,9 @@ import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 
-import java.util.ArrayList;
-import java.util.LinkedHashMap;
 import java.util.List;
 
 import utn.curso.mar71n.tpijuegomemoria.R;
-import utn.curso.mar71n.tpijuegomemoria.main.MainActivity;
 
 /**
  * Created by android on 31/05/16.
@@ -45,6 +41,10 @@ public class HScoresFragment extends Fragment {
         unhs.setNombre("Martin");
         hsdbHelper.saveHS(unhs);
         */
+        RecyclerView recyclerViewHS = (RecyclerView) rootView.findViewById(R.id.listaHS);
+
+        LinearLayoutManager l = new LinearLayoutManager(container.getContext());
+        recyclerViewHS.setLayoutManager(l);
 
         List<HaighScores> lhaighScores = hsdbHelper.getAll();
 
@@ -52,10 +52,6 @@ public class HScoresFragment extends Fragment {
             Log.d("HS", "id : " + hs.getId() + " tiempo : " + hs.getTiempo() + " nombre : " + hs.getNombre());
         }
 
-        RecyclerView recyclerViewHS = (RecyclerView) rootView.findViewById(R.id.listaHS);
-
-        LinearLayoutManager l = new LinearLayoutManager(getActivity());
-        recyclerViewHS.setLayoutManager(l);
 
         hsAdapter = new HSAdapter( lhaighScores);
         recyclerViewHS.setAdapter(hsAdapter);
