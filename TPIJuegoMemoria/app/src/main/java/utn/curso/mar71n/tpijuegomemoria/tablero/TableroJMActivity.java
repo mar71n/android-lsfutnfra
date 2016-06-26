@@ -11,6 +11,7 @@ import android.support.v7.widget.GridLayoutManager;
 import android.support.v7.widget.RecyclerView;
 import android.support.v7.widget.Toolbar;
 import android.util.Log;
+import android.view.MenuItem;
 import android.view.View;
 import android.widget.TextView;
 import android.widget.Toast;
@@ -193,6 +194,14 @@ public class TableroJMActivity extends AppCompatActivity implements OnFichaClick
                 return false;
             default: return false;
         }
+    }
+
+    @Override
+    public boolean onOptionsItemSelected(MenuItem item){
+        switch (item.getItemId()){
+            case android.R.id.home : finish();break;
+        }
+        return true;
     }
 
     private void taparDos() {
