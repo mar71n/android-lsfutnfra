@@ -3,4 +3,65 @@
     android:orientation="vertical" android:layout_width="match_parent"
     android:layout_height="match_parent">
 
+    <LinearLayout
+        android:background="@color/colorPrimary"
+        android:orientation="horizontal"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content">
+
+        <ImageView
+            android:src="@drawable/img_1"
+            android:layout_width="@dimen/cuadrito"
+            android:layout_height="@dimen/cuadrito"
+            android:id="@+id/imageView8" />
+
+        <ImageView
+            android:src="@drawable/img_2"
+            android:layout_width="@dimen/cuadrito"
+            android:layout_height="@dimen/cuadrito"
+            android:id="@+id/imageView9" />
+
+        <ImageView
+            android:src="@drawable/img_3"
+            android:layout_width="@dimen/cuadrito"
+            android:layout_height="@dimen/cuadrito"
+            android:id="@+id/imageView10" />
+
+        <ImageView
+            android:src="@drawable/img_4"
+            android:layout_width="@dimen/cuadrito"
+            android:layout_height="@dimen/cuadrito"
+            android:id="@+id/imageView11" />
+    </LinearLayout>
+
+    <LinearLayout
+        android:background="@color/colorPrimary"
+        android:orientation="horizontal"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content" >
+
+        <ImageView
+            android:src="@drawable/img_5"
+            android:layout_width="@dimen/cuadrito"
+            android:layout_height="@dimen/cuadrito"
+            android:id="@+id/imageView12" />
+
+        <ImageView
+            android:src="@drawable/img_6"
+            android:layout_width="@dimen/cuadrito"
+            android:layout_height="@dimen/cuadrito"
+            android:id="@+id/imageView13" />
+
+        <ImageView
+            android:src="@drawable/img_1"
+            android:layout_width="@dimen/cuadrito"
+            android:layout_height="@dimen/cuadrito"
+            android:id="@+id/imageView14" />
+
+        <ImageView
+            android:src="@drawable/img_3"
+            android:layout_width="@dimen/cuadrito"
+            android:layout_height="@dimen/cuadrito"
+            android:id="@+id/imageView15" />
+    </LinearLayout>
 </LinearLayout>
