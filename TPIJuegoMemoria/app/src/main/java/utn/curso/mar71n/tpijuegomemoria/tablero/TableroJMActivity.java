@@ -189,7 +189,8 @@ public class TableroJMActivity extends AppCompatActivity implements OnFichaClick
                 return false;
             case 2:
                 segundos = msg.arg2;
-                txtTiempo.setText("Tiempo : " + segundos);
+                String sSegundos = String.format("%04d", msg.arg2);
+                txtTiempo.setText("Tiempo : " + sSegundos);
                 adapterf.notifyDataSetChanged();
                 return false;
             default: return false;

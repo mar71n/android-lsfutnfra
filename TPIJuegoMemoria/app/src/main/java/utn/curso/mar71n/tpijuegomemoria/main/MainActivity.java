@@ -103,6 +103,7 @@ public class MainActivity extends AppCompatActivity implements NavigationView.On
     }
 
     private void jugar(){
+        viewPager.setCurrentItem(0);
         Intent i = new Intent(this,TableroJMActivity.class);
         i.putExtra("nivel",nivel);
         startActivity(i);
