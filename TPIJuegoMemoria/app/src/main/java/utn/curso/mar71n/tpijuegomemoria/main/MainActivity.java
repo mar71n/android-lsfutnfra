@@ -92,24 +92,15 @@ public class MainActivity extends AppCompatActivity implements NavigationView.On
         int id = item.getItemId();
         if (id == R.id.drawer_item_presentacion){
             Fragment fragment = new InfoFragment();
-            FragmentManager fragmentManager = getSupportFragmentManager();
-            fragmentManager.beginTransaction()
-                    .replace(R.id.contenedor, fragment)
-                    .commit();
+            cargarFragment(fragment);
         }
         if (id == R.id.drawer_item_niveles){
             Fragment fragment = new NivelesFragment();
-            FragmentManager fragmentManager = getSupportFragmentManager();
-            fragmentManager.beginTransaction()
-                    .replace(R.id.contenedor, fragment)
-                    .commit();
+            cargarFragment(fragment);
         }
         if (id == R.id.drawer_item_records){
             Fragment fragment = new HScoresFragment();
-            FragmentManager fragmentManager = getSupportFragmentManager();
-            fragmentManager.beginTransaction()
-                    .replace(R.id.contenedor, fragment)
-                    .commit();
+            cargarFragment(fragment);
         }
         if (id == R.id.drawer_item_jugar){
             jugar();
@@ -122,6 +113,13 @@ public class MainActivity extends AppCompatActivity implements NavigationView.On
         Intent i = new Intent(this,TableroJMActivity.class);
         i.putExtra("nivel",nivel);
         startActivity(i);
+    }
+
+    private void cargarFragment(Fragment fragment){
+        FragmentManager fragmentManager = getSupportFragmentManager();
+        fragmentManager.beginTransaction()
+                .replace(R.id.contenedor, fragment)
+                .commit();
     }
 
     @Override
