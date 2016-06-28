@@ -5,6 +5,7 @@ import android.os.Bundle;
 import android.support.design.widget.FloatingActionButton;
 import android.support.design.widget.NavigationView;
 import android.support.design.widget.TabLayout;
+import android.support.v4.app.Fragment;
 import android.support.v4.app.FragmentManager;
 import android.support.v4.view.GravityCompat;
 import android.support.v4.view.ViewPager;
@@ -17,6 +18,9 @@ import android.view.Menu;
 import android.view.MenuItem;
 
 import utn.curso.mar71n.tpijuegomemoria.R;
+import utn.curso.mar71n.tpijuegomemoria.haigscores.HScoresFragment;
+import utn.curso.mar71n.tpijuegomemoria.niveles.NivelesFragment;
+import utn.curso.mar71n.tpijuegomemoria.splash.InfoFragment;
 import utn.curso.mar71n.tpijuegomemoria.tablero.TableroJMActivity;
 
 public class MainActivity extends AppCompatActivity implements NavigationView.OnNavigationItemSelectedListener, INiveles {
@@ -41,14 +45,14 @@ public class MainActivity extends AppCompatActivity implements NavigationView.On
             }
         });
         // obtengo el ViewPager
-        viewPager = (ViewPager) findViewById(R.id.vpager);
+        //viewPager = (ViewPager) findViewById(R.id.vpager);
         FragmentManager fm = getSupportFragmentManager();
-        MyScreenSlidePagerAdapter adapter = new MyScreenSlidePagerAdapter(fm);
-        viewPager.setAdapter(adapter);
-        TabLayout tabLayout = (TabLayout) findViewById(R.id.tabLayout);
-        tabLayout.setupWithViewPager(viewPager);
+        //MyScreenSlidePagerAdapter adapter = new MyScreenSlidePagerAdapter(fm);
+        //viewPager.setAdapter(adapter);
+        //TabLayout tabLayout = (TabLayout) findViewById(R.id.tabLayout);
+        //tabLayout.setupWithViewPager(viewPager);
 
-        viewPager.setCurrentItem(0);
+        //viewPager.setCurrentItem(0);
 
         drawer = (DrawerLayout) findViewById(R.id.drawer_layout);
         ActionBarDrawerToggle toggle = new ActionBarDrawerToggle(
@@ -87,13 +91,25 @@ public class MainActivity extends AppCompatActivity implements NavigationView.On
     public boolean onNavigationItemSelected(MenuItem item) {
         int id = item.getItemId();
         if (id == R.id.drawer_item_presentacion){
-            viewPager.setCurrentItem(0);
+            Fragment fragment = new InfoFragment();
+            FragmentManager fragmentManager = getSupportFragmentManager();
+            fragmentManager.beginTransaction()
+                    .replace(R.id.contenedor, fragment)
+                    .commit();
         }
         if (id == R.id.drawer_item_niveles){
-            viewPager.setCurrentItem(1);
+            Fragment fragment = new NivelesFragment();
+            FragmentManager fragmentManager = getSupportFragmentManager();
+            fragmentManager.beginTransaction()
+                    .replace(R.id.contenedor, fragment)
+                    .commit();
         }
         if (id == R.id.drawer_item_records){
-            viewPager.setCurrentItem(2);
+            Fragment fragment = new HScoresFragment();
+            FragmentManager fragmentManager = getSupportFragmentManager();
+            fragmentManager.beginTransaction()
+                    .replace(R.id.contenedor, fragment)
+                    .commit();
         }
         if (id == R.id.drawer_item_jugar){
             jugar();
@@ -103,7 +119,6 @@ public class MainActivity extends AppCompatActivity implements NavigationView.On
     }
 
     private void jugar(){
-        viewPager.setCurrentItem(0);
         Intent i = new Intent(this,TableroJMActivity.class);
         i.putExtra("nivel",nivel);
         startActivity(i);
