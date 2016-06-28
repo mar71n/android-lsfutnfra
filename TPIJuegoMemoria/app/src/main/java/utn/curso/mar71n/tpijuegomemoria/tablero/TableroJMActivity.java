@@ -13,6 +13,7 @@ import android.support.v7.widget.Toolbar;
 import android.util.Log;
 import android.view.MenuItem;
 import android.view.View;
+import android.widget.ImageView;
 import android.widget.TextView;
 import android.widget.Toast;
 
@@ -40,6 +41,9 @@ public class TableroJMActivity extends AppCompatActivity implements OnFichaClick
     private int paresOk; // cuantos pares de fichas encontrados
     private int segundos; // segundos de juego
     private int vidas; // veces que se puede errar
+    ImageView v1;
+    ImageView v2;
+    ImageView v3;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -48,6 +52,7 @@ public class TableroJMActivity extends AppCompatActivity implements OnFichaClick
 
         txtTiempo = (TextView) findViewById(R.id.textVTiempo);
         pares = 6;
+        vidas = 3;
 
         Toolbar toolbart = (Toolbar) findViewById(R.id.toolbarT);
         toolbart.setTitle("Memo Test");
@@ -96,7 +101,9 @@ public class TableroJMActivity extends AppCompatActivity implements OnFichaClick
         adapterf = new MyAdapter(fichas,this);
         list.setAdapter(adapterf);
 
-
+        v1 = (ImageView) findViewById(R.id.imgvida1);
+        v2 = (ImageView) findViewById(R.id.imgvida2);
+        v3 = (ImageView) findViewById(R.id.imgvida3);
 
     }
     @Override
@@ -120,8 +127,23 @@ public class TableroJMActivity extends AppCompatActivity implements OnFichaClick
                 paresOk++;
                 Toast.makeText(this, (CharSequence) "BIEN !!!", Toast.LENGTH_SHORT).show();
             } else {
+                vidas--;
+                switch (vidas){
+                    case 2 : v1.setImageResource(R.drawable.cuadrados);break;
+                    case 1 : v2.setImageResource(R.drawable.cuadrados);break;
+                    case 0 : v3.setImageResource(R.drawable.cuadrados);break;
+                }
+                String tarea;
+                if(vidas == 0){
+                    tseg.interrupt();
+                    String gameover = " G A M E   O V E R ";
+                    Toast.makeText(this, (CharSequence) gameover, Toast.LENGTH_LONG).show();
+                    tarea = EsperarYTareaThread.taparTodas;
+                }else{
+                    tarea = EsperarYTareaThread.taparDos;
+                }
                 h = new Handler(this);
-                EsperarYTareaThread eyt = new EsperarYTareaThread(h, 1, EsperarYTareaThread.taparDos);
+                EsperarYTareaThread eyt = new EsperarYTareaThread(h, 1, tarea);
                 Thread t = new Thread(eyt);
                 t.start();
             }

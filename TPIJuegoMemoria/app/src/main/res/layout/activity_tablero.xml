@@ -46,30 +46,32 @@
                         android:id="@+id/textVTiempo" />
 
                     <TextView
-                        android:layout_gravity="right"
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
                         android:textAppearance="?android:attr/textAppearanceMedium"
-                        android:text="Vidas :  "
+                        android:text=" - Vidas : "
                         android:id="@+id/textView5" />
 
+                    <!-- Designed by Freepik and distributed by Flaticon -->
                     <ImageView
-                        android:src="@drawable/img_1"
-                        android:layout_width="20dp"
-                        android:layout_height="20dp"
-                        android:id="@+id/imageView4" />
+                        android:src="@drawable/androide"
+                        android:layout_width="25dp"
+                        android:layout_height="25dp"
+                        android:id="@+id/imgvida1" />
 
+                    <!-- Designed by Freepik and distributed by Flaticon -->
                     <ImageView
-                        android:src="@drawable/img_1"
-                        android:layout_width="20dp"
-                        android:layout_height="20dp"
-                        android:id="@+id/imageView5" />
+                        android:src="@drawable/androide"
+                        android:layout_width="25dp"
+                        android:layout_height="25dp"
+                        android:id="@+id/imgvida2" />
 
+                    <!-- Designed by Freepik and distributed by Flaticon -->
                     <ImageView
-                        android:src="@drawable/img_1"
-                        android:layout_width="20dp"
-                        android:layout_height="20dp"
-                        android:id="@+id/imageView6" />
+                        android:src="@drawable/androide"
+                        android:layout_width="25dp"
+                        android:layout_height="25dp"
+                        android:id="@+id/imgvida3" />
                 </LinearLayout>
 
                 <android.support.v7.widget.RecyclerView
@@ -78,6 +80,7 @@
                     android:layout_width="match_parent"
                     android:layout_height="match_parent"
                     android:scrollbars="vertical"
+                    android:layout_marginTop="3dp"
                     />
 
                 <android.support.design.widget.FloatingActionButton
