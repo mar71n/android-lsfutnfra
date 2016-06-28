@@ -14,7 +14,7 @@ import java.util.ArrayList;
  */
 public class HScoresDBHelper extends SQLiteOpenHelper {
     // If you change the database schema, you must increment the database version.
-    public static final int DATABASE_VERSION = 1;
+    public static final int DATABASE_VERSION = 3;
     public static final String DATABASE_NAME = "HaighScores.db3";
     private SQLiteDatabase db;
 
@@ -67,5 +67,6 @@ public class HScoresDBHelper extends SQLiteOpenHelper {
         Log.d("HELPER","ejecuto onUpgrade");
         db.execSQL(HaighScoresContract.SQL_DELETE_HSCORES);
         db.execSQL(HaighScoresContract.SQL_CREATE_HSCORES);
+        db.execSQL(HaighScoresContract.SQL_INSERT_HSCORES);
     }
 }
