@@ -4,11 +4,9 @@ import android.content.Intent;
 import android.os.Bundle;
 import android.support.design.widget.FloatingActionButton;
 import android.support.design.widget.NavigationView;
-import android.support.design.widget.TabLayout;
 import android.support.v4.app.Fragment;
 import android.support.v4.app.FragmentManager;
 import android.support.v4.view.GravityCompat;
-import android.support.v4.view.ViewPager;
 import android.support.v4.widget.DrawerLayout;
 import android.support.v7.app.ActionBarDrawerToggle;
 import android.support.v7.app.AppCompatActivity;
@@ -24,7 +22,6 @@ import utn.curso.mar71n.tpijuegomemoria.splash.InfoFragment;
 import utn.curso.mar71n.tpijuegomemoria.tablero.TableroJMActivity;
 
 public class MainActivity extends AppCompatActivity implements NavigationView.OnNavigationItemSelectedListener, INiveles {
-    private ViewPager viewPager;
     private DrawerLayout drawer;
     private int nivel;
 
@@ -62,6 +59,9 @@ public class MainActivity extends AppCompatActivity implements NavigationView.On
 
         NavigationView navigationView = (NavigationView) findViewById(R.id.nav_view);
         navigationView.setNavigationItemSelectedListener(this);
+
+        Fragment fragment = new InfoFragment();
+        cargarFragment(fragment);
 
     }
 
@@ -110,6 +110,8 @@ public class MainActivity extends AppCompatActivity implements NavigationView.On
     }
 
     private void jugar(){
+        Fragment fragment = new InfoFragment();
+        cargarFragment(fragment);
         Intent i = new Intent(this,TableroJMActivity.class);
         i.putExtra("nivel",nivel);
         startActivity(i);

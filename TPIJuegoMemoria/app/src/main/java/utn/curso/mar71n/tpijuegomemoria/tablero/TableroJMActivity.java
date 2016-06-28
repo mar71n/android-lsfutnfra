@@ -39,6 +39,7 @@ public class TableroJMActivity extends AppCompatActivity implements OnFichaClick
     private int pares; // cuantas pares de fichas hay
     private int paresOk; // cuantos pares de fichas encontrados
     private int segundos; // segundos de juego
+    private int vidas; // veces que se puede errar
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {

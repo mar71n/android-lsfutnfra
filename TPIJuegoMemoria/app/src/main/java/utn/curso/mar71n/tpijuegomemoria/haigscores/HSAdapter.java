@@ -43,6 +43,13 @@ public class HSAdapter extends Adapter<HSViewHolder> {
         HaighScores hs = lista.get(position);
         holder.nombre.setText(hs.getNombre());
         holder.segundos.setText(String.valueOf(hs.getTiempo()) + " segundos.");
+        switch (position){
+            case 0: holder.imagen.setImageResource(R.drawable.trofeo);break;
+            case 1: holder.imagen.setImageResource(R.drawable.medalla);break;
+            case 2: holder.imagen.setImageResource(R.drawable.signos);break;
+            default: holder.imagen.setImageResource(R.drawable.darpalmas);
+        }
+
     }/**/
 
     @Override
