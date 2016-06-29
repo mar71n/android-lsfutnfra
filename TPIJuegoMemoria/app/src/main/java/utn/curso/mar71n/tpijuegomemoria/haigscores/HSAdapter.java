@@ -27,17 +27,6 @@ public class HSAdapter extends Adapter<HSViewHolder> {
         return vh;
     }
 
-    /*
-    @Override
-    public void onBindViewHolder(RecyclerView.ViewHolder holder, int position) {
-        Log.d("onBind N", "position : " + position);
-        HaighScores hs = lista.get(position);
-        HSViewHolder hsvholder = (HSViewHolder) holder;
-        hsvholder.nombre.setText(hs.getNombre());
-        //hsvholder.segundos.setText(hs.getTiempo());
-    }*/
-
-    /**/
     @Override
     public void onBindViewHolder(HSViewHolder holder, int position) {
         HaighScores hs = lista.get(position);
@@ -50,7 +39,7 @@ public class HSAdapter extends Adapter<HSViewHolder> {
             default: holder.imagen.setImageResource(R.drawable.darpalmas);
         }
 
-    }/**/
+    }
 
     @Override
     public int getItemCount() {
