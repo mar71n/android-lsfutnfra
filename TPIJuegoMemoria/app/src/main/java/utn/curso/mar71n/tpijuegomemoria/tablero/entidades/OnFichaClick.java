@@ -1,4 +1,4 @@
-package utn.curso.mar71n.tpijuegomemoria.tablero;
+package utn.curso.mar71n.tpijuegomemoria.tablero.entidades;
 
 /**
  * Created by Ernesto on 27/01/2015.

@@ -11,7 +11,7 @@ import utn.curso.mar71n.tpijuegomemoria.R;
 /**
  * Created by android on 31/05/16.
  */
-public class InfoFragment extends Fragment {
+public class SplashFragment extends Fragment {
 
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container,Bundle

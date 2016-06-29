@@ -1,4 +1,4 @@
-package utn.curso.mar71n.tpijuegomemoria.haigscores;
+package utn.curso.mar71n.tpijuegomemoria.haigscores.entidades;
 
 /**
  * Created by Usuario on 20/6/2016.

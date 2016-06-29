@@ -1,4 +1,4 @@
-package utn.curso.mar71n.tpijuegomemoria.tablero;
+package utn.curso.mar71n.tpijuegomemoria.tablero.threads;
 
 import android.os.Handler;
 import android.os.Message;

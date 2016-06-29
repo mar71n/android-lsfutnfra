@@ -9,8 +9,8 @@ import android.view.View;
 import android.widget.EditText;
 
 import utn.curso.mar71n.tpijuegomemoria.R;
-import utn.curso.mar71n.tpijuegomemoria.haigscores.HScoresDBHelper;
-import utn.curso.mar71n.tpijuegomemoria.haigscores.HaighScores;
+import utn.curso.mar71n.tpijuegomemoria.haigscores.entidades.HScoresDBHelper;
+import utn.curso.mar71n.tpijuegomemoria.haigscores.entidades.HaighScores;
 
 /**
  * Created by mrampoldi on 21/06/2016.

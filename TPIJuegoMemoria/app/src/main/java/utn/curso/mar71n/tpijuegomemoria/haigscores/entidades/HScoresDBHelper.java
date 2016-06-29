@@ -1,4 +1,4 @@
-package utn.curso.mar71n.tpijuegomemoria.haigscores;
+package utn.curso.mar71n.tpijuegomemoria.haigscores.entidades;
 
 import android.content.ContentValues;
 import android.content.Context;
@@ -8,6 +8,9 @@ import android.database.sqlite.SQLiteOpenHelper;
 import android.util.Log;
 
 import java.util.ArrayList;
+
+import utn.curso.mar71n.tpijuegomemoria.haigscores.entidades.HaighScores;
+import utn.curso.mar71n.tpijuegomemoria.haigscores.entidades.HaighScoresContract;
 
 /**
  * Created by Usuario on 20/6/2016.

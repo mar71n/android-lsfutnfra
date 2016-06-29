@@ -4,7 +4,6 @@ import android.os.Bundle;
 import android.support.v4.app.Fragment;
 import android.support.v7.widget.LinearLayoutManager;
 import android.support.v7.widget.RecyclerView;
-import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -12,6 +11,8 @@ import android.view.ViewGroup;
 import java.util.List;
 
 import utn.curso.mar71n.tpijuegomemoria.R;
+import utn.curso.mar71n.tpijuegomemoria.haigscores.entidades.HScoresDBHelper;
+import utn.curso.mar71n.tpijuegomemoria.haigscores.entidades.HaighScores;
 
 /**
  * Created by android on 31/05/16.

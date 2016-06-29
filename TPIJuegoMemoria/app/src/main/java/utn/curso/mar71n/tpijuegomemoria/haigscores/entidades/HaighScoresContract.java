@@ -1,7 +1,5 @@
-package utn.curso.mar71n.tpijuegomemoria.haigscores;
+package utn.curso.mar71n.tpijuegomemoria.haigscores.entidades;
 
-import android.content.Context;
-import android.database.sqlite.SQLiteDatabase;
 import android.provider.BaseColumns;
 
 /**

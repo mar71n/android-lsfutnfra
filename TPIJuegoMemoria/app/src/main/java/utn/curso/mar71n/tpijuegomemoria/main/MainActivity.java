@@ -18,7 +18,7 @@ import android.view.MenuItem;
 import utn.curso.mar71n.tpijuegomemoria.R;
 import utn.curso.mar71n.tpijuegomemoria.haigscores.HScoresFragment;
 import utn.curso.mar71n.tpijuegomemoria.niveles.NivelesFragment;
-import utn.curso.mar71n.tpijuegomemoria.splash.InfoFragment;
+import utn.curso.mar71n.tpijuegomemoria.splash.SplashFragment;
 import utn.curso.mar71n.tpijuegomemoria.tablero.TableroJMActivity;
 
 public class MainActivity extends AppCompatActivity implements NavigationView.OnNavigationItemSelectedListener, INiveles {
@@ -60,7 +60,7 @@ public class MainActivity extends AppCompatActivity implements NavigationView.On
         NavigationView navigationView = (NavigationView) findViewById(R.id.nav_view);
         navigationView.setNavigationItemSelectedListener(this);
 
-        Fragment fragment = new InfoFragment();
+        Fragment fragment = new SplashFragment();
         cargarFragment(fragment);
 
     }
@@ -91,7 +91,7 @@ public class MainActivity extends AppCompatActivity implements NavigationView.On
     public boolean onNavigationItemSelected(MenuItem item) {
         int id = item.getItemId();
         if (id == R.id.drawer_item_presentacion){
-            Fragment fragment = new InfoFragment();
+            Fragment fragment = new SplashFragment();
             cargarFragment(fragment);
         }
         if (id == R.id.drawer_item_niveles){
@@ -110,7 +110,7 @@ public class MainActivity extends AppCompatActivity implements NavigationView.On
     }
 
     private void jugar(){
-        Fragment fragment = new InfoFragment();
+        Fragment fragment = new SplashFragment();
         cargarFragment(fragment);
         Intent i = new Intent(this,TableroJMActivity.class);
         i.putExtra("nivel",nivel);

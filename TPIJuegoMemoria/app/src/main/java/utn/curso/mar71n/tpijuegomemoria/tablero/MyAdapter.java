@@ -8,6 +8,8 @@ import android.view.ViewGroup;
 import java.util.List;
 
 import utn.curso.mar71n.tpijuegomemoria.R;
+import utn.curso.mar71n.tpijuegomemoria.tablero.entidades.Ficha;
+import utn.curso.mar71n.tpijuegomemoria.tablero.entidades.OnFichaClick;
 
 public class MyAdapter extends Adapter<MyViewHolder> {
 

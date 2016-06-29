@@ -5,6 +5,7 @@ import android.view.View;
 import android.widget.ImageView;
 
 import utn.curso.mar71n.tpijuegomemoria.R;
+import utn.curso.mar71n.tpijuegomemoria.tablero.entidades.OnFichaClick;
 
 public class MyViewHolder extends RecyclerView.ViewHolder implements View.OnClickListener {
 

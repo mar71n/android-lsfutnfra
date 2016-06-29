@@ -1,7 +1,6 @@
 package utn.curso.mar71n.tpijuegomemoria.haigscores;
 
 import android.support.v7.widget.RecyclerView.Adapter;
-import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -9,6 +8,7 @@ import android.view.ViewGroup;
 import java.util.List;
 
 import utn.curso.mar71n.tpijuegomemoria.R;
+import utn.curso.mar71n.tpijuegomemoria.haigscores.entidades.HaighScores;
 
 /**
  * Created by Usuario on 20/6/2016.
