@@ -31,7 +31,7 @@ import utn.curso.mar71n.tpijuegomemoria.tablero.threads.SegunderoThread;
 /**
  * Created by Usuario on 6/6/2016.
  */
-public class TableroJMActivity extends AppCompatActivity implements OnFichaClick, Handler.Callback {
+public class TableroJMActivity extends AppCompatActivity implements OnFichaClick, Handler.Callback, ITableroActivity {
     private List<Ficha> fichas;
     private MyAdapter adapterf;
     private Handler h;
@@ -48,6 +48,7 @@ public class TableroJMActivity extends AppCompatActivity implements OnFichaClick
     ImageView v1;
     ImageView v2;
     ImageView v3;
+    Tablero tablero;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -108,6 +109,8 @@ public class TableroJMActivity extends AppCompatActivity implements OnFichaClick
         v1 = (ImageView) findViewById(R.id.imgvida1);
         v2 = (ImageView) findViewById(R.id.imgvida2);
         v3 = (ImageView) findViewById(R.id.imgvida3);
+
+        Tablero tablero = new Tablero(this);
 
     }
     @Override
@@ -277,6 +280,45 @@ public class TableroJMActivity extends AppCompatActivity implements OnFichaClick
         Bundle b = new Bundle();
         b.putInt("segundos",segundos);
         dialogFragment.setArguments(b);
-        dialogFragment.show(getSupportFragmentManager(),"nombre");
+        dialogFragment.show(getSupportFragmentManager(), "nombre");
+    }
+
+    @Override
+    public ImageView getImagen(int ni) {
+        switch (ni){
+            case 1: return v1;
+            case 2: return v2;
+            case 3: return v3;
+            default: return null;
+        }
+    }
+
+    @Override
+    public void redibujar(int position) {
+        adapterf.notifyItemChanged(position);
+    }
+
+    public void redibujar() {
+        adapterf.notifyDataSetChanged();
+    }
+
+    @Override
+    public void lanzarToast(CharSequence mensage, int duracion) {
+        Toast.makeText(this, mensage, duracion);
+    }
+
+    @Override
+    public void clickableFAB(boolean clickable) {
+        fabT.setClickable(clickable);
+    }
+
+    @Override
+    public void lanzarDialogoPedirNombre() {
+        pedirNombre();
+    }
+
+    @Override
+    public void setTxtTiempo(String tiempo) {
+        txtTiempo.setText(tiempo);
     }
 }
