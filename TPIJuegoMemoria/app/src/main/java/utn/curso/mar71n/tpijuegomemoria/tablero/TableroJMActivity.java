@@ -109,6 +109,9 @@ public class TableroJMActivity extends AppCompatActivity implements OnFichaClick
     @Override
     public void clickEnFicha(int position) {
         Ficha f = fichas.get(position);
+        if (!f.isClickable()){
+            return;
+        }
         //String t = "click en " + position + " stado : " + f.getEstado();
         //Toast.makeText(this, (CharSequence) t, Toast.LENGTH_SHORT).show();
         if (kmostradas < 2) {
@@ -138,14 +141,14 @@ public class TableroJMActivity extends AppCompatActivity implements OnFichaClick
                     tseg.interrupt();
                     String gameover = " G A M E   O V E R ";
                     Toast.makeText(this, (CharSequence) gameover, Toast.LENGTH_LONG).show();
-                    tarea = EsperarYTareaThread.taparTodas;
+                    clickableTodas(false);
+                    fabT.setClickable(true);
                 }else{
-                    tarea = EsperarYTareaThread.taparDos;
+                    h = new Handler(this);
+                    EsperarYTareaThread eyt = new EsperarYTareaThread(h, 1, EsperarYTareaThread.taparDos);
+                    Thread t = new Thread(eyt);
+                    t.start();
                 }
-                h = new Handler(this);
-                EsperarYTareaThread eyt = new EsperarYTareaThread(h, 1, tarea);
-                Thread t = new Thread(eyt);
-                t.start();
             }
             if(pares == paresOk){
                 tseg.interrupt();
@@ -163,8 +166,13 @@ public class TableroJMActivity extends AppCompatActivity implements OnFichaClick
 
     private void iniciar(){
         Collections.shuffle(fichas);
+        kmostradas = 0;
         paresOk = 0;
         segundos = 0;
+        vidas = 3;
+        v1.setImageResource(R.drawable.androide);
+        v2.setImageResource(R.drawable.androide);
+        v3.setImageResource(R.drawable.androide);
         int pausa;
         switch (nivel){
             case 1 : pausa = 3; break;
@@ -179,6 +187,7 @@ public class TableroJMActivity extends AppCompatActivity implements OnFichaClick
         EsperarYTareaThread vt = new EsperarYTareaThread(h, pausa, EsperarYTareaThread.taparTodas);
         Thread t = new Thread(vt);
         t.start();
+        fabT.setClickable(false);
     }
 
     private void mostrarTodas(){
@@ -193,6 +202,12 @@ public class TableroJMActivity extends AppCompatActivity implements OnFichaClick
         }
     }
 
+    private void clickableTodas(boolean clickable){
+        for(Ficha f : fichas) {
+            f.setClickable(clickable);
+        }
+    }
+
     @Override
     public boolean handleMessage(Message msg) {
         //Log.d("THREAD ", "a1 : " + msg.arg1 + " a2 : " + msg.arg2);
@@ -201,7 +216,7 @@ public class TableroJMActivity extends AppCompatActivity implements OnFichaClick
                 String senal = (String) msg.obj;
                 switch (senal) {
                     case EsperarYTareaThread.taparTodas:
-                        taparTodas();arrancarSegundero();
+                        taparTodas();arrancarSegundero();clickableTodas(true);
                         break;
                     case EsperarYTareaThread.taparDos:
                         taparDos();break;

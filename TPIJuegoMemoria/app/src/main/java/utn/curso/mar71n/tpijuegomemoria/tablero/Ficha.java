@@ -7,11 +7,13 @@ public class Ficha {
 	
 	private boolean estado;
 	private int imagen;
+	private boolean clickable;
 	
 	public Ficha(boolean estado, int imagen)
 	{
 		setEstado(estado);
 		setImagen(imagen);
+		clickable = false;
 	}
 	
 	public boolean getEstado() {
@@ -26,5 +28,10 @@ public class Ficha {
 	public void setImagen(int imagen) {
 		this.imagen = imagen;
 	}
-	
+	public boolean isClickable() {
+		return clickable;
+	}
+	public void setClickable(boolean clickable) {
+		this.clickable = clickable;
+	}
 }

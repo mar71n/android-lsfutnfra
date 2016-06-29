@@ -16,7 +16,7 @@ public class SegunderoThread implements Runnable {
         int i = 0;
         while (true){
             i++;
-            if(i > 300){
+            if(i > 100){
                 return;
             }
             try {
