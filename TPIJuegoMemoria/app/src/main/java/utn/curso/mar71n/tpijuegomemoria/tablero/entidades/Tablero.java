@@ -1,11 +1,9 @@
-package utn.curso.mar71n.tpijuegomemoria.tablero;
+package utn.curso.mar71n.tpijuegomemoria.tablero.entidades;
 
-import android.os.Bundle;
 import android.os.Handler;
 import android.os.Message;
 import android.util.Log;
 import android.widget.ImageView;
-import android.widget.TextView;
 import android.widget.Toast;
 
 import java.util.ArrayList;
@@ -13,8 +11,6 @@ import java.util.Collections;
 import java.util.List;
 
 import utn.curso.mar71n.tpijuegomemoria.R;
-import utn.curso.mar71n.tpijuegomemoria.tablero.entidades.Ficha;
-import utn.curso.mar71n.tpijuegomemoria.tablero.entidades.OnFichaClick;
 import utn.curso.mar71n.tpijuegomemoria.tablero.threads.EsperarYTareaThread;
 import utn.curso.mar71n.tpijuegomemoria.tablero.threads.SegunderoThread;
 

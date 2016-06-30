@@ -2,15 +2,12 @@ package utn.curso.mar71n.tpijuegomemoria.tablero;
 
 import android.content.Intent;
 import android.os.Bundle;
-import android.os.Handler;
-import android.os.Message;
 import android.support.design.widget.FloatingActionButton;
 import android.support.v7.app.ActionBar;
 import android.support.v7.app.AppCompatActivity;
 import android.support.v7.widget.GridLayoutManager;
 import android.support.v7.widget.RecyclerView;
 import android.support.v7.widget.Toolbar;
-import android.util.Log;
 import android.view.MenuItem;
 import android.view.View;
 import android.widget.ImageView;
@@ -18,20 +15,14 @@ import android.widget.TextView;
 import android.widget.Toast;
 
 
-import java.util.ArrayList;
-import java.util.Collections;
-import java.util.List;
-
 import utn.curso.mar71n.tpijuegomemoria.R;
-import utn.curso.mar71n.tpijuegomemoria.tablero.entidades.Ficha;
-import utn.curso.mar71n.tpijuegomemoria.tablero.entidades.OnFichaClick;
-import utn.curso.mar71n.tpijuegomemoria.tablero.threads.EsperarYTareaThread;
-import utn.curso.mar71n.tpijuegomemoria.tablero.threads.SegunderoThread;
+import utn.curso.mar71n.tpijuegomemoria.tablero.entidades.ITableroActivity;
+import utn.curso.mar71n.tpijuegomemoria.tablero.entidades.Tablero;
 
 /**
  * Created by Usuario on 6/6/2016.
  */
-public class TableroJMActivity extends AppCompatActivity implements  ITableroActivity {
+public class TableroJMActivity extends AppCompatActivity implements ITableroActivity {
     private MyAdapter adapterf;
     private int nivel; // nivel de dificultad
     private FloatingActionButton fabT;
