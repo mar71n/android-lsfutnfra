@@ -19,6 +19,7 @@
             </intent-filter>
         </activity>
         <activity android:name=".tablero.TableroJMActivity"
+            android:screenOrientation="portrait"
             android:label="Juego de la Memoria"
             android:theme="@style/AppTheme.NoActionBar"/>
     </application>
