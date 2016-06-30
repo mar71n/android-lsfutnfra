@@ -22,14 +22,14 @@ import utn.curso.mar71n.tpijuegomemoria.tablero.threads.SegunderoThread;
  * Created by mrampoldi on 29/06/2016.
  */
 public class Tablero implements OnFichaClick,  Handler.Callback {
-    private List<Ficha> fichas;
+    public List<Ficha> fichas;
     private int nivel; // nivel de dificultad
     private int kmostradas;
     private int[] parmostradas;
     private Thread tseg;  // thread cuenta segundos
     private int pares; // cuantas pares de fichas hay
     private int paresOk; // cuantos pares de fichas encontrados
-    private int segundos; // segundos de juego
+    public int segundos; // segundos de juego
     private int vidas; // veces que se puede errar
     private ITableroActivity tableroActivity;
     ImageView v1;
@@ -188,6 +188,9 @@ public class Tablero implements OnFichaClick,  Handler.Callback {
         paresOk = 0;
         segundos = 0;
         vidas = 3;
+        v1 = tableroActivity.getImagen(1);
+        v2 = tableroActivity.getImagen(2);
+        v3 = tableroActivity.getImagen(3);
         v1.setImageResource(R.drawable.androide);
         v2.setImageResource(R.drawable.androide);
         v3.setImageResource(R.drawable.androide);

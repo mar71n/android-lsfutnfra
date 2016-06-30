@@ -55,6 +55,8 @@ public class TableroJMActivity extends AppCompatActivity implements OnFichaClick
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_tablero);
 
+        tablero = new Tablero(this);
+
         txtTiempo = (TextView) findViewById(R.id.textVTiempo);
         pares = 6;
         vidas = 3;
@@ -70,7 +72,7 @@ public class TableroJMActivity extends AppCompatActivity implements OnFichaClick
             @Override
             public void onClick(View view) {
                 fabT.setClickable(false);
-                iniciar();
+                tablero.iniciar();// iniciar();
             }
         });
 
@@ -103,14 +105,13 @@ public class TableroJMActivity extends AppCompatActivity implements OnFichaClick
 
         list.setLayoutManager(layoutManager);
 
-        adapterf = new MyAdapter(fichas,this);
+        adapterf = new MyAdapter(tablero.fichas,tablero);
         list.setAdapter(adapterf);
 
         v1 = (ImageView) findViewById(R.id.imgvida1);
         v2 = (ImageView) findViewById(R.id.imgvida2);
         v3 = (ImageView) findViewById(R.id.imgvida3);
 
-        Tablero tablero = new Tablero(this);
 
     }
     @Override
@@ -278,6 +279,7 @@ public class TableroJMActivity extends AppCompatActivity implements OnFichaClick
     private void pedirNombre(){
         android.support.v4.app.DialogFragment dialogFragment = new IngreseNombreDialogFragment();
         Bundle b = new Bundle();
+        segundos = tablero.segundos;
         b.putInt("segundos",segundos);
         dialogFragment.setArguments(b);
         dialogFragment.show(getSupportFragmentManager(), "nombre");
@@ -304,7 +306,7 @@ public class TableroJMActivity extends AppCompatActivity implements OnFichaClick
 
     @Override
     public void lanzarToast(CharSequence mensage, int duracion) {
-        Toast.makeText(this, mensage, duracion);
+        Toast.makeText(this, mensage, duracion).show();
     }
 
     @Override
