@@ -38,7 +38,8 @@ public class Tablero implements OnFichaClick,  Handler.Callback {
     private Handler h;
 
 
-    public Tablero(ITableroActivity tableroActivity){
+    public Tablero(ITableroActivity tableroActivity, int nivel){
+        this.nivel = nivel;
         pares = 6;
         vidas = 3;
         kmostradas = 0;
@@ -69,8 +70,6 @@ public class Tablero implements OnFichaClick,  Handler.Callback {
         if (!f.isClickable()){
             return;
         }
-        //String t = "click en " + position + " stado : " + f.getEstado();
-        //Toast.makeText(this, (CharSequence) t, Toast.LENGTH_SHORT).show();
         if (kmostradas < 2) {
             if (f.getEstado() == Ficha.TAPADA) {
                 f.setEstado(Ficha.DESTAPADA);
@@ -87,7 +86,6 @@ public class Tablero implements OnFichaClick,  Handler.Callback {
                 kmostradas = 0;
                 paresOk++;
                 tableroActivity.lanzarToast((CharSequence) "BIEN !!!", Toast.LENGTH_SHORT);
-                //Toast.makeText(this, (CharSequence) "BIEN !!!", Toast.LENGTH_SHORT).show();
             } else {
                 vidas--;
                 switch (vidas){
@@ -100,10 +98,8 @@ public class Tablero implements OnFichaClick,  Handler.Callback {
                     tseg.interrupt();
                     String gameover = " G A M E   O V E R ";
                     tableroActivity.lanzarToast((CharSequence) gameover, Toast.LENGTH_LONG);
-                    //Toast.makeText(this, (CharSequence) gameover, Toast.LENGTH_LONG).show();
                     clickableTodas(false);
                     tableroActivity.clickableFAB(true);
-                    //fabT.setClickable(true);
                 }else{
                     h = new Handler(this);
                     EsperarYTareaThread eyt = new EsperarYTareaThread(h, 1, EsperarYTareaThread.taparDos);
@@ -115,16 +111,12 @@ public class Tablero implements OnFichaClick,  Handler.Callback {
                 tseg.interrupt();
                 String ganaste = "Bien !!! segundos: " + segundos;
                 tableroActivity.lanzarToast((CharSequence) ganaste, Toast.LENGTH_SHORT);
-                //Toast.makeText(this, (CharSequence) ganaste, Toast.LENGTH_SHORT).show();
                 EsperarYTareaThread eyt = new EsperarYTareaThread(h, 2, EsperarYTareaThread.pedirNombre);
                 Thread t = new Thread(eyt);
                 t.start();
                 tableroActivity.clickableFAB(true);
-                //fabT.setClickable(true);
             }
         }
-        //adapterf.notifyItemChanged(position);
-        // cambiar el estado de la ficha y refrescar la pantalla
     }
 
     private void clickableTodas(boolean clickable){
@@ -134,7 +126,6 @@ public class Tablero implements OnFichaClick,  Handler.Callback {
     }
     @Override
     public boolean handleMessage(Message msg) {
-        //Log.d("THREAD ", "a1 : " + msg.arg1 + " a2 : " + msg.arg2);
         switch (msg.arg1){
             case 1:
                 String senal = (String) msg.obj;
@@ -146,19 +137,15 @@ public class Tablero implements OnFichaClick,  Handler.Callback {
                         taparDos();break;
                     case EsperarYTareaThread.pedirNombre:
                         tableroActivity.lanzarDialogoPedirNombre();
-                        //pedirNombre();
                         break;
                 }
                 tableroActivity.redibujar();
-                //adapterf.notifyDataSetChanged();
                 return false;
             case 2:
                 segundos = msg.arg2;
                 String sSegundos = String.format("%04d", msg.arg2);
                 tableroActivity.setTxtTiempo("Tiempo : " + sSegundos);
-                //txtTiempo.setText("Tiempo : " + sSegundos);
                 tableroActivity.redibujar();
-                //adapterf.notifyDataSetChanged();
                 return false;
             default: return false;
         }
@@ -203,18 +190,24 @@ public class Tablero implements OnFichaClick,  Handler.Callback {
         }
         mostrarTodas();
         tableroActivity.redibujar();
-        //adapterf.notifyDataSetChanged();
         Log.d("theread", "muestra");
         h = new Handler(this);
         EsperarYTareaThread vt = new EsperarYTareaThread(h, pausa, EsperarYTareaThread.taparTodas);
         Thread t = new Thread(vt);
         t.start();
         tableroActivity.clickableFAB(false);
-        //fabT.setClickable(false);
     }
     private void mostrarTodas(){
         for(Ficha f : fichas) {
             f.setEstado(Ficha.DESTAPADA);
         }
+    }
+
+    public void paraThread(){
+        if (tseg != null) {
+            Log.d("th", "lo pare porque existe");
+            tseg.interrupt();
+        }else {Log.d("th", "NO existe");}
+
     }
 }
