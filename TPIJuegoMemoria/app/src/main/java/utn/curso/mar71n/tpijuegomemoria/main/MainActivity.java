@@ -4,6 +4,7 @@ import android.content.Intent;
 import android.os.Bundle;
 import android.support.design.widget.FloatingActionButton;
 import android.support.design.widget.NavigationView;
+import android.support.design.widget.TabLayout;
 import android.support.v4.app.Fragment;
 import android.support.v4.app.FragmentManager;
 import android.support.v4.view.GravityCompat;
@@ -49,8 +50,8 @@ public class MainActivity extends AppCompatActivity implements NavigationView.On
         FragmentManager fm = getSupportFragmentManager();
         MyScreenSlidePagerAdapter adapter = new MyScreenSlidePagerAdapter(fm);
         viewPager.setAdapter(adapter);
-        //TabLayout tabLayout = (TabLayout) findViewById(R.id.tabLayout);
-        //tabLayout.setupWithViewPager(viewPager);
+        TabLayout tabLayout = (TabLayout) findViewById(R.id.tabLayout);
+        tabLayout.setupWithViewPager(viewPager);
 
         viewPager.setCurrentItem(0);
 
@@ -102,6 +103,7 @@ public class MainActivity extends AppCompatActivity implements NavigationView.On
         }
         if (id == R.id.drawer_item_niveles){
             viewPager.setCurrentItem(1);
+
             // Fragment fragment = new NivelesFragment();
             // cargarFragment(fragment);
         }

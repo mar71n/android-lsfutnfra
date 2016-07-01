@@ -20,16 +20,14 @@
             android:background="?attr/colorPrimary"
             app:popupTheme="@style/AppTheme.PopupOverlay" />
 
-        <!--
         <android.support.design.widget.TabLayout
             android:id="@+id/tabLayout"
-            android:background="#FFffa22a"
-            app:tabIndicatorColor="#ffc107"
-            app:tabSelectedTextColor="#FFFFFFFF"
+            android:background="#2a7fff"
+            app:tabIndicatorColor="#ff07fb"
+            app:tabSelectedTextColor="#ffffff"
             app:tabTextColor="#AAFFFFFF"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"/>
-            -->
 
 
 

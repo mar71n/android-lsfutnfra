@@ -34,4 +34,14 @@ public class MyScreenSlidePagerAdapter  extends FragmentStatePagerAdapter {
     public int getCount() {
         return NUM_PAGES;
     }
+
+    public CharSequence getPageTitle(int position)
+    {
+        switch(position)
+        {
+            case 0: return "MEMO";
+            case 1: return "NIVELES";
+            default: return "HAIGH SCORE";
+        }
+    }
 }
