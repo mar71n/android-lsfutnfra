@@ -73,8 +73,11 @@ public class MainActivity extends AppCompatActivity implements NavigationView.On
 
     @Override
     public boolean onCreateOptionsMenu(Menu menu) {
+        // TODO implementar setings via SharedPreferences:
+        // Leccion 12 :
+        // https://material.google.com/patterns/settings.html?hl=es#what-to-make-a-setting
         // Inflate the menu; this adds items to the action bar if it is present.
-        getMenuInflater().inflate(R.menu.menu_main, menu);
+        //getMenuInflater().inflate(R.menu.menu_main, menu);
         return true;
     }
 

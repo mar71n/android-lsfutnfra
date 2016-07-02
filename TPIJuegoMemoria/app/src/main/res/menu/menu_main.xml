@@ -2,6 +2,8 @@
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     tools:context=".main.MainActivity">
+    <!-- //TODO  implementar setings via SharedPreferences
+          este archivo queda ocioso hasta entonces. -->
     <item
         android:id="@+id/action_settings"
         android:orderInCategory="100"

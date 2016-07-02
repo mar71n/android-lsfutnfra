@@ -62,6 +62,7 @@ public class Tablero implements OnFichaClick,  Handler.Callback {
 
     @Override
     public void clickEnFicha(int position) {
+        // TODO implementar sonidos en las fichas y si gana o pierde
         Ficha f = fichas.get(position);
         if (!f.isClickable()){
             return;
@@ -85,6 +86,8 @@ public class Tablero implements OnFichaClick,  Handler.Callback {
             } else {
                 vidas--;
                 switch (vidas){
+                    // TODO esto pasarlo al activity. ITableroActivity.sacarVidasImagenes(int vidas)
+                    // Son elementos visuales.
                     case 2 : v1.setImageResource(R.drawable.cuadrados);break;
                     case 1 : v2.setImageResource(R.drawable.cuadrados);break;
                     case 0 : v3.setImageResource(R.drawable.cuadrados);break;
@@ -171,6 +174,7 @@ public class Tablero implements OnFichaClick,  Handler.Callback {
         paresOk = 0;
         segundos = 0;
         vidas = 3;
+        // TODO esto va en el activity. ITableroActivity.ponerVidasImagenes()
         v1 = tableroActivity.getImagen(1);
         v2 = tableroActivity.getImagen(2);
         v3 = tableroActivity.getImagen(3);

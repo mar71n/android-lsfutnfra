@@ -33,7 +33,8 @@ public class MyAdapter extends Adapter<MyViewHolder> {
 
     @Override
     public void onBindViewHolder(MyViewHolder holder, int position) {
-        // cargar el viewholder con la info del objeto Ficha : si esta destapado, cargo el imageview con la imagen de la ficha
+        // cargar el viewholder con la info del objeto Ficha : si esta destapado,
+        // cargo el imageview con la imagen de la ficha
         // si esta tapada, cargo el imageview con la imagen del signo de pregunta
         Ficha f = lista.get(position);
         MyViewHolder v = holder;
