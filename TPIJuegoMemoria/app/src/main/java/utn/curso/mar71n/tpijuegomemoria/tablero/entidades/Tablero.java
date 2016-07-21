@@ -32,6 +32,7 @@ public class Tablero implements OnFichaClick,  Handler.Callback {
     ImageView v2;
     ImageView v3;
     private Handler h;
+    private boolean permitirclicks;
 
 
     public Tablero(ITableroActivity tableroActivity, int nivel){
@@ -39,6 +40,7 @@ public class Tablero implements OnFichaClick,  Handler.Callback {
         pares = 6;
         vidas = 3;
         kmostradas = 0;
+        permitirclicks = false;
         parmostradas = new int[2];
         this.tableroActivity = tableroActivity;
         v1 = tableroActivity.getImagen(1);
@@ -64,24 +66,25 @@ public class Tablero implements OnFichaClick,  Handler.Callback {
     public void clickEnFicha(int position) {
         // TODO implementar sonidos en las fichas y si gana o pierde
         Ficha f = fichas.get(position);
-        if (!f.isClickable()){
+        if (!permitirclicks){
             return;
         }
         if (kmostradas < 2) {
             if (f.getEstado() == Ficha.TAPADA) {
                 f.setEstado(Ficha.DESTAPADA);
                 tableroActivity.redibujar(position);
-                //adapterf.notifyItemChanged(position);
                 kmostradas++;
                 parmostradas[kmostradas - 1] = position;
             }
         }
         if (kmostradas == 2) {
+            permitirclicks = false;
             Ficha f1 = fichas.get(parmostradas[0]);
             Ficha f2 = fichas.get(parmostradas[1]);
             if (f1.getImagen() == f2.getImagen()) {
                 kmostradas = 0;
                 paresOk++;
+                permitirclicks = true;
                 tableroActivity.lanzarToast((CharSequence) "BIEN !!!", Toast.LENGTH_SHORT);
             } else {
                 vidas--;
@@ -92,12 +95,11 @@ public class Tablero implements OnFichaClick,  Handler.Callback {
                     case 1 : v2.setImageResource(R.drawable.cuadrados);break;
                     case 0 : v3.setImageResource(R.drawable.cuadrados);break;
                 }
-                String tarea;
                 if(vidas == 0){
                     tseg.interrupt();
                     String gameover = " G A M E   O V E R ";
                     tableroActivity.lanzarToast((CharSequence) gameover, Toast.LENGTH_LONG);
-                    clickableTodas(false);
+                    permitirclicks = false;
                     tableroActivity.clickableFAB(true);
                 }else{
                     h = new Handler(this);
@@ -118,11 +120,6 @@ public class Tablero implements OnFichaClick,  Handler.Callback {
         }
     }
 
-    private void clickableTodas(boolean clickable){
-        for(Ficha f : fichas) {
-            f.setClickable(clickable);
-        }
-    }
     @Override
     public boolean handleMessage(Message msg) {
         switch (msg.arg1){
@@ -130,10 +127,10 @@ public class Tablero implements OnFichaClick,  Handler.Callback {
                 String senal = (String) msg.obj;
                 switch (senal) {
                     case EsperarYTareaThread.taparTodas:
-                        taparTodas();arrancarSegundero();clickableTodas(true);
+                        taparTodas();arrancarSegundero();permitirclicks = true;
                         break;
                     case EsperarYTareaThread.taparDos:
-                        taparDos();break;
+                        taparDos();permitirclicks = true;break;
                     case EsperarYTareaThread.pedirNombre:
                         tableroActivity.lanzarDialogoPedirNombre();
                         break;
@@ -167,6 +164,7 @@ public class Tablero implements OnFichaClick,  Handler.Callback {
         f1.setEstado(Ficha.TAPADA);
         f2.setEstado(Ficha.TAPADA);
         kmostradas = 0;
+        permitirclicks = true;
     }
     public void iniciar(){
         Collections.shuffle(fichas);
