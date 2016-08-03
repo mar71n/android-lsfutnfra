@@ -21,6 +21,7 @@ public class FetchURLData {
         //leerUrlbin();
         try{
             URL url = new URL("http://boletinoficial.buenosaires.gob.ar//?c=Boletin&a=descargarBoletin&numero=4934");
+            //URL url = new URL("http://www.metrovias.com.ar//Subterraneos//Estado?site=Metrovias");
             getAsByteArray(url);
         }catch (Exception ex){
             System.err.println("error " + ex.getMessage() + "\n" + ex.toString());
