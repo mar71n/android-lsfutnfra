@@ -4,6 +4,7 @@ import java.io.InputStream;
 import java.net.URLConnection;
 import java.io.ByteArrayOutputStream;
 import java.io.FileOutputStream;
+// import java.io.BufferedInputStream;
 
 public class WGetBO {
 
@@ -13,9 +14,17 @@ public class WGetBO {
             System.setProperty("http.proxyPort", args[1]);
         }
         String nbo = "4933";
+        String[] nbos = {"4936","4935","4934","4933","4932","4931","4930"};
         try{
-            URL url = new URL("http://boletinoficial.buenosaires.gob.ar//?c=Boletin&a=descargarBoletin&numero=" + nbo);
-            getAsByteArray(url, nbo);
+            for (String ibo : nbos){
+                System.out.println("B.O.: " + ibo);
+                URL url = new URL("http://boletinoficial.buenosaires.gob.ar//?c=Boletin&a=descargarBoletin&numero=" + ibo);
+                getAsByteArray(url, ibo);
+                // String comando = "pasar.sh";
+                // Process proceso = Runtime.getRuntime().exec(comando);
+                // InputStream inputstream = proceso.getInputStream();
+                // BufferedInputStream bufferedinputstream = new BufferedInputStream(inputstream);
+            }
         }catch (Exception ex){
             System.err.println("error " + ex.getMessage() + "\n" + ex.toString());
         }
